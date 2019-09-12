@@ -1,11 +1,16 @@
 import React from 'react'
-import axios from 'axios'
 
 class Standings extends React.Component{
-    render(){
+    render() {
+        let results = this.props.owners.map( (owner, i) => {
+            return(
+                <li key={i}>{owner.name}</li>
+                
+            )
+        })
         return(
             <div>
-
+                {results}
             </div>
         )
     }

@@ -1,9 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {Route, Link} from 'react-router-dom'
 
-import Standings from './Standings/Standings'
+import StandingsContainer from './StandingsContainer/StandingsContainer'
 
 
 class App extends React.Component {
@@ -15,7 +14,7 @@ class App extends React.Component {
 
         </nav>
         <main>
-          <Route exact path = '/' Component = {Standings}/>
+          <Route exact path = '/' component = {StandingsContainer}/>
         </main>
       </div>
     );
