@@ -1,64 +1,33 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import './StandingsTable.css'
+import {Link} from 'react-router-dom'
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: '100%',
-    marginTop: theme.spacing(3),
-    overflowX: 'auto',
-  },
-  table: {
-    minWidth: 650,
-  },
-}));
+class StandingsTable extends React.Component{
+  render(){
+    let props = this.props.results.sort((a,b)=> (a.winPercent < b.winPercent) ? 1 : -1)
+    console.log(props)
+    
+    let standings = props.map( (owner, i) => {
+      return(
+        <div key = {i} className= 'grid'>
+          <Link to={`owner/${owner.id}`}> <h2>{owner.name}</h2></Link>
+          <h2>{owner.winPercent.toFixed(2)}</h2>
+          <h2>{owner.winNumber}</h2>
+          <h2>{owner.lossNumber}</h2>
+        </div>
+      )
+    })
+    return(
+      <div className ='container'>
+        <h1>User vs. User Standings</h1>
+        <div className = 'grid' >
+          <h1>Name</h1> <h1>Win Percent</h1> <h1>Wins</h1><h1>Losses</h1>
+        </div>
+        {standings}
+      </div>
+    )  
+  }
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
+} 
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
-export default function SimpleTable() {
-  const classes = useStyles();
-
-  return (
-    <Paper className={classes.root}>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map(row => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </Paper>
-  );
-}
+ export default StandingsTable

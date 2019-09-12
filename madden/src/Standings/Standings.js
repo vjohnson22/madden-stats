@@ -1,7 +1,7 @@
 import React from 'react'
 import StandingsTable from '../StandingsTable/StandingsTable'
 
-let sortedResults
+
 
 class Standings extends React.Component{
     constructor(){
