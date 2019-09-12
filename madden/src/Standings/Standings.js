@@ -1,16 +1,36 @@
 import React from 'react'
+import StandingsTable from '../StandingsTable/StandingsTable'
+
+let sortedResults
 
 class Standings extends React.Component{
+    constructor(){
+        super()
+
+        this.state = {
+            owners:[]
+        }
+    }
+
+    
     render() {
         let results = this.props.owners.map( (owner, i) => {
-            return(
-                <li key={i}>{owner.name}</li>
-                
-            )
+            owner.winNumber = owner.wins.length
+            owner.lossNumber = owner.losses.length
+            owner.winPercent = owner.winNumber/(owner.winNumber+owner.lossNumber)
+            return owner
+            
+
         })
+        
+        
+        
+        
+        
+
         return(
             <div>
-                {results}
+                <StandingsTable results ={results} />
             </div>
         )
     }
