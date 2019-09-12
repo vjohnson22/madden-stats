@@ -16,7 +16,7 @@ class App extends React.Component {
         </nav>
         <main>
           <Route exact path = '/' component = {StandingsContainer}/>
-          <Route path = '/owner' render = {routerProps => <Owner {...routerProps}/>}/>
+          <Route path = '/owners' render = {routerProps => <Owner {...routerProps}/>}/>
         </main>
       </div>
     );

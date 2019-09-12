@@ -10,7 +10,7 @@ class StandingsTable extends React.Component{
     let standings = props.map( (owner, i) => {
       return(
         <div key = {i} className= 'grid'>
-          <Link to={`owner/${owner.id}`}> <h2>{owner.name}</h2></Link>
+          <Link to={`owners/${owner.id}`}> <h2>{owner.name}</h2></Link>
           <h2>{owner.winPercent.toFixed(2)}</h2>
           <h2>{owner.winNumber}</h2>
           <h2>{owner.lossNumber}</h2>
