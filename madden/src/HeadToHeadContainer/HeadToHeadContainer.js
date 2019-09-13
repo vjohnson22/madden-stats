@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import HeadToHeadStats from '../HeadToHeadStats/HeadToHeadStats'
+import './HeadToHeadContainer.css'
 
 class HeadToHeadContainer extends React.Component{
     constructor(){
@@ -43,8 +44,7 @@ class HeadToHeadContainer extends React.Component{
     render(){
         let wins
         let losses
-        let path = `https://maddenstats.herokuapp.com/owners/${this.props.versusCode}`
-        console.log(path)        
+        
         if(this.state.versusName=== "All"|| this.state.versusName=== undefined  ){
             if (this.props.games === undefined){
                 wins = 0
@@ -98,7 +98,12 @@ class HeadToHeadContainer extends React.Component{
                 <button onClick={this.findPlayer}>Submit</button>
                 {/* <HeadToHeadStats games = {this.props.games} gamestats={this.props.gamestats} owner={this.props.id} againstCode = {this.state.versusCode} againstName = {this.state.versusName}/> */}
                 <h1>Record Against {this.state.versusName}: {wins}-{losses}</h1>
-                {/* <HeadToHeadStats versusName= {this.state.versusName} wins = {wins} losses = {losses}/> */}
+                <div className='grids'>
+                    <h2>{this.props.name}</h2>
+                    <h2>VS.</h2>
+                    <h2>{this.state.versusName}</h2>
+                    <HeadToHeadStats owner = {this.props.id} against ={this.state.versusName} againstCode = {this.state.versusCode} gamestats={this.props.gamestats} stat="points"/>
+                </div>
             </div>
         )
     }

@@ -8,28 +8,50 @@ class HeadToHeadStats extends React.Component{
         super()
 
         this.state = {
-            owner:"",
-            against:"",
-            againstName:"",
-            wins:""
+            
         }
     }
-    componentDidMount(){
-        this.setState({against:this.props.againstCode})
-    }
+    
     
     render(){
-          
+        let avg  
 
+        
+        if(this.props.gamestats !== undefined && this.props.againstCode ===""){
+            let array = this.props.gamestats.filter( game => {
+                if(game.owner === `https://maddenstats.herokuapp.com/owners/${this.props.owner}`){
+                    return true
+                }
+            })
+            let length = array.length
+            
+            let sum = 0 
+            array.forEach(game => {
+                    
+                sum += game[`${this.props.stat}`]
+            })
+            avg = sum/length
+        }else if(this.props.gamestats !== undefined && this.props.againstCode > 0){ 
+            let array = this.props.gamestats.filter( game => {
+                if(game.owner === `https://maddenstats.herokuapp.com/owners/${this.props.owner}` && game.against === `https://maddenstats.herokuapp.com/owners/${this.props.againstCode}` ){
+                    return true
+                }
+            })
+            let length = array.length
+            
+            let sum = 0 
+            array.forEach(game => {
+                    
+                sum += game[`${this.props.stat}`]
+            })
+            avg = sum/length
+        } 
 
         
 
         return(
             <div>
-                <div>{this.props.owner}</div>
-                <div>{this.props.against}</div>
-                {/* <WinsVsLosses against = {this.props.againstName} wins= {this.wins}/> */}
-                <h1>Record Against {this.props.versusName}: {this.props.wins}-{this.props.losses}</h1>
+                <h2>{avg}</h2>      
             </div>
         )
     }
