@@ -1,9 +1,7 @@
 import React from 'react'
-import axios from 'axios'
-import WinsVsLosses from '../WinsVsLosses/WinsVsLosses'
 
 
-class HeadToHeadStats extends React.Component{
+class Opponent extends React.Component{
     constructor(){
         super()
 
@@ -19,7 +17,7 @@ class HeadToHeadStats extends React.Component{
         
         if(this.props.gamestats !== undefined && this.props.againstCode ===""){
             let array = this.props.gamestats.filter( game => {
-                if(game.owner === `https://maddenstats.herokuapp.com/owners/${this.props.owner}`){
+                if(game.against === `https://maddenstats.herokuapp.com/owners/${this.props.owner}`){
                     return true
                 }
             })
@@ -34,7 +32,7 @@ class HeadToHeadStats extends React.Component{
             avg =avgHolder.toFixed(1)
         }else if(this.props.gamestats !== undefined && this.props.againstCode > 0){ 
             let array = this.props.gamestats.filter( game => {
-                if(game.owner === `https://maddenstats.herokuapp.com/owners/${this.props.owner}` && game.against === `https://maddenstats.herokuapp.com/owners/${this.props.againstCode}` ){
+                if(game.owner === `https://maddenstats.herokuapp.com/owners/${this.props.againstCode}` && game.against === `https://maddenstats.herokuapp.com/owners/${this.props.owner}` ){
                     return true
                 }
             })
@@ -47,6 +45,7 @@ class HeadToHeadStats extends React.Component{
             })
             let avgHolder = (sum/length)
             avg =avgHolder.toFixed(1)
+
         } 
 
         
@@ -59,4 +58,4 @@ class HeadToHeadStats extends React.Component{
     }
 }
 
-export default HeadToHeadStats
+export default Opponent

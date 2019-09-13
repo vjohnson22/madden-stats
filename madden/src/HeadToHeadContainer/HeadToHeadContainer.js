@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import HeadToHeadStats from '../HeadToHeadStats/HeadToHeadStats'
 import './HeadToHeadContainer.css'
+import Opponent from '../Opponent/Opponent'
 
 class HeadToHeadContainer extends React.Component{
     constructor(){
@@ -99,10 +100,27 @@ class HeadToHeadContainer extends React.Component{
                 {/* <HeadToHeadStats games = {this.props.games} gamestats={this.props.gamestats} owner={this.props.id} againstCode = {this.state.versusCode} againstName = {this.state.versusName}/> */}
                 <h1>Record Against {this.state.versusName}: {wins}-{losses}</h1>
                 <div className='grids'>
-                    <h2>{this.props.name}</h2>
+                    <h1>{this.props.name}</h1>
                     <h2>VS.</h2>
-                    <h2>{this.state.versusName}</h2>
+                    <h1>{this.state.versusName}</h1>
                     <HeadToHeadStats owner = {this.props.id} against ={this.state.versusName} againstCode = {this.state.versusCode} gamestats={this.props.gamestats} stat="points"/>
+                    <h2>PPG</h2>
+                    <Opponent owner = {this.props.id} against ={this.state.versusName} againstCode = {this.state.versusCode} gamestats={this.props.gamestats} stat="points"/>
+                    <HeadToHeadStats owner = {this.props.id} against ={this.state.versusName} againstCode = {this.state.versusCode} gamestats={this.props.gamestats} stat="off_yards_gained"/>
+                    <h2>Total Offense</h2>
+                    <Opponent owner = {this.props.id} against ={this.state.versusName} againstCode = {this.state.versusCode} gamestats={this.props.gamestats} stat="off_yards_gained"/>
+                    <HeadToHeadStats owner = {this.props.id} against ={this.state.versusName} againstCode = {this.state.versusCode} gamestats={this.props.gamestats} stat="rush_yards"/>
+                    <h2>Rush Yards</h2>
+                    <Opponent owner = {this.props.id} against ={this.state.versusName} againstCode = {this.state.versusCode} gamestats={this.props.gamestats} stat="rush_yards"/>
+                    <HeadToHeadStats owner = {this.props.id} against ={this.state.versusName} againstCode = {this.state.versusCode} gamestats={this.props.gamestats} stat="pass_yards"/>
+                    <h2>Pass Yards</h2>
+                    <Opponent owner = {this.props.id} against ={this.state.versusName} againstCode = {this.state.versusCode} gamestats={this.props.gamestats} stat="pass_yards"/>
+                    <HeadToHeadStats owner = {this.props.id} against ={this.state.versusName} againstCode = {this.state.versusCode} gamestats={this.props.gamestats} stat="first_downs"/>
+                    <h2>First Downs</h2>
+                    <Opponent owner = {this.props.id} against ={this.state.versusName} againstCode = {this.state.versusCode} gamestats={this.props.gamestats} stat="first_downs"/>
+                    <HeadToHeadStats owner = {this.props.id} against ={this.state.versusName} againstCode = {this.state.versusCode} gamestats={this.props.gamestats} stat="turnovers"/>
+                    <h2>Turnovers</h2>
+                    <Opponent owner = {this.props.id} against ={this.state.versusName} againstCode = {this.state.versusCode} gamestats={this.props.gamestats} stat="turnovers"/>
                 </div>
             </div>
         )
