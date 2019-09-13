@@ -11,17 +11,17 @@ class Owner extends React.Component{
     componentDidMount(){
         axios.get(`https://maddenstats.herokuapp.com${this.props.location.pathname}`)
             .then(res => this.setState({...res.data}))
-        axios.get('https://maddenstats.herokuapp.com/gamestats/')
-            .then(res => {
-                this.setState({gamestats:res.data})
-            })
-        axios.get('https://maddenstats.herokuapp.com/games/')
-           .then(res => {
-                this.setState({games:res.data})
-            })    
+        // axios.get('https://maddenstats.herokuapp.com/gamestats/')
+        //     .then(res => {
+        //         this.setState({gamestats:res.data})
+        //     })
+        // axios.get('https://maddenstats.herokuapp.com/games/')
+        //    .then(res => {
+        //         this.setState({games:res.data})
+        //     })    
     }
     render() {
-    
+        console.log(this.props.games)
         return(
             <div>
                 <h1>{this.state.name}</h1>

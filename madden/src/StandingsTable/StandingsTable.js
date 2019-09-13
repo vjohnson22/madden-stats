@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 class StandingsTable extends React.Component{
   render(){
     let props = this.props.results.sort((a,b)=> (a.winPercent < b.winPercent) ? 1 : -1)
-    console.log(props)
+    
     
     let standings = props.map( (owner, i) => {
       return(

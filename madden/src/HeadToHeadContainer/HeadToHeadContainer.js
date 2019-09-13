@@ -36,20 +36,14 @@ class HeadToHeadContainer extends React.Component{
     }
 }
 
-    // componentDidMount(){
-    //     axios.get('https://maddenstats.herokuapp.com/games/')
-    //         .then(res => {
-    //             this.setState({data:res.data})
-    //         })
-    // }
         
     render(){
-        
+
         return(
             <div>
                 <input placeholder="Versus?" value={this.state.versus} onChange={this.updateVersus}/> 
                 <button onClick={this.findPlayer}>Submit</button>
-                <HeadToHeadStats data = {this.state.data} owner={this.props.id} againstCode = {this.state.versusCode} againstName = {this.state.versusName}/>
+                <HeadToHeadStats games = {this.props.games} gamestats={this.props.gamestats} owner={this.props.id} againstCode = {this.state.versusCode} againstName = {this.state.versusName}/>
             </div>
         )
     }

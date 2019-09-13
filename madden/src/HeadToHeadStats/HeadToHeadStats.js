@@ -13,23 +13,35 @@ class HeadToHeadStats extends React.Component{
         }
     }
     
-    componentDidMount(){
-        axios.get('https://maddenstats.herokuapp.com/gamestats/')
-            .then(res => {
-                this.setState({data:res.data})
-            })
+    // componentDidMount(){
+    //     axios.get('https://maddenstats.herokuapp.com/gamestats/')
+    //         .then(res => {
+    //             this.setState({data:res.data})
+    //         })
    
                 
-        }
+    //     }
 
     render(){
+    //     let wins = 0
+    //     if(this.props.games === undefined){
+
+    //     }else{
+    //        let winsArray = this.props.data.filter( game => {
+    //             if(this.props.againstName === 'All' && game.won === `https://maddenstats.herokuapp.com/owners/${this.props.owner}`){
+    //                 return true
+    //         }
+    //     })
+    //     wins = winsArray.length
+    // }
+
         
-        let wins = this.props.data.filter( game => {
-            if(this.props.againstName === 'All' && game.won === `https://maddenstats.herokuapp.com/owners/${this.props.owner}`){
-                return true
-            }
-        })        
-    console.log(wins)    
+        // let wins = this.props.data.filter( game => {
+        //     if(this.props.againstName === 'All' && game.won === `https://maddenstats.herokuapp.com/owners/${this.props.owner}`){
+        //         return true
+        //     }
+    //     })        
+    // console.log(wins)    
        
     //    this.setState({winTotal:wins.length}) 
 
@@ -38,7 +50,7 @@ class HeadToHeadStats extends React.Component{
                 <div>{this.props.owner}</div>
                 <div>{this.props.against}</div>
                 {/* <WinsVsLosses against = {this.props.againstName} wins= {this.wins}/> */}
-                <h1>Record Against {this.props.againstName}: {this.state.winTotal}</h1>
+                <h1>Record Against {this.props.againstName}: {this.wins}</h1>
             </div>
         )
     }
