@@ -21,11 +21,11 @@ class Owner extends React.Component{
         //     })    
     }
     render() {
-        console.log(this.props.games)
+        
         return(
             <div>
                 <h1>{this.state.name}</h1>
-                <HeadToHeadContainer id={this.state.id} gamestats={this.state.gamestats} games = {this.state.games}/>
+                <HeadToHeadContainer {...this.state} gamestats={this.props.gamestats} games = {this.props.games}/>
             </div>
         )
     }

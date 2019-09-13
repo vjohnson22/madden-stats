@@ -8,49 +8,52 @@ class HeadToHeadStats extends React.Component{
         super()
 
         this.state = {
-            data: [],
-            winTotal:0
+            owner:"",
+            against:"",
+            againstName:"",
+            wins:""
         }
     }
+    componentDidMount(){
+        
+    }
     
-    // componentDidMount(){
-    //     axios.get('https://maddenstats.herokuapp.com/gamestats/')
-    //         .then(res => {
-    //             this.setState({data:res.data})
-    //         })
-   
-                
-    //     }
-
     render(){
-    //     let wins = 0
-    //     if(this.props.games === undefined){
+        let wins
+        let losses
 
-    //     }else{
-    //        let winsArray = this.props.data.filter( game => {
-    //             if(this.props.againstName === 'All' && game.won === `https://maddenstats.herokuapp.com/owners/${this.props.owner}`){
-    //                 return true
-    //         }
-    //     })
-    //     wins = winsArray.length
-    // }
+        if (this.props.games === undefined){
+            wins = 0
+        }else{
+            let winArray = this.props.games.filter( game => {
+                if(game.won === `https://maddenstats.herokuapp.com/owners/${this.props.owner}`){
+                    return true
+                }
+            })
+            wins = winArray.length     
+        }
+        
+        if (this.props.games === undefined){
+            losses = 0
+        }else{
+            let lossArray = this.props.games.filter( game => {
+                if(game.lost === `https://maddenstats.herokuapp.com/owners/${this.props.owner}`){
+                    return true
+                }
+            })
+            losses = lossArray.length     
+        }
+        
+
 
         
-        // let wins = this.props.data.filter( game => {
-        //     if(this.props.againstName === 'All' && game.won === `https://maddenstats.herokuapp.com/owners/${this.props.owner}`){
-        //         return true
-        //     }
-    //     })        
-    // console.log(wins)    
-       
-    //    this.setState({winTotal:wins.length}) 
 
         return(
             <div>
                 <div>{this.props.owner}</div>
                 <div>{this.props.against}</div>
                 {/* <WinsVsLosses against = {this.props.againstName} wins= {this.wins}/> */}
-                <h1>Record Against {this.props.againstName}: {this.wins}</h1>
+                <h1>Record Against {this.props.againstName}: {wins}-{losses}</h1>
             </div>
         )
     }

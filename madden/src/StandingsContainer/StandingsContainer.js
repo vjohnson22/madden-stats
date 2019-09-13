@@ -15,7 +15,7 @@ class StandingsContainer extends React.Component{
         axios.get('https://maddenstats.herokuapp.com/owners/')
             .then( response => {
                 this.setState({owners:response.data})
-                
+             
             })
     }
     
