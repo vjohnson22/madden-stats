@@ -10,7 +10,8 @@ class HeadToHeadContainer extends React.Component{
             data:[],
             versus:"",
             versusCode:"",
-            versusName:'All'
+            versusName:'All',
+            switch:""
         }
     }
     updateVersus = (e) => {
@@ -35,15 +36,69 @@ class HeadToHeadContainer extends React.Component{
             alert('Invalid name')
     }
 }
-
+    componentDidMount(){
+        this.forceUpdate()
+    }
         
     render(){
-
+        let wins
+        let losses
+        let path = `https://maddenstats.herokuapp.com/owners/${this.props.versusCode}`
+        console.log(path)        
+        if(this.state.versusName=== "All"|| this.state.versusName=== undefined  ){
+            if (this.props.games === undefined){
+                wins = 0
+                losses = 0
+                
+            }else{
+                let winArray = this.props.games.filter( game => {
+                    if(game.won === `https://maddenstats.herokuapp.com/owners/${this.props.id}`){
+                    return true
+                    }
+                })
+                wins = winArray.length
+                let lossArray = this.props.games.filter( game => {
+                    if(game.lost === `https://maddenstats.herokuapp.com/owners/${this.props.id}`){
+                        return true
+                    }
+                })
+                losses = lossArray.length          
+        }
+        
+                
+        
+            
+        }else {
+            if (this.props.games === undefined){
+                wins = 0
+                losses = 0
+            }else{
+                let winArray = this.props.games.filter( game => {
+                    if(game.won === `https://maddenstats.herokuapp.com/owners/${this.props.id}` && game.lost === `https://maddenstats.herokuapp.com/owners/${this.state.versusCode}`){
+                    
+                    
+                    return true
+                    }
+                })
+                wins = winArray.length
+                let lossArray = this.props.games.filter( game => {
+                    if(game.lost === `https://maddenstats.herokuapp.com/owners/${this.props.id}` && game.won === `https://maddenstats.herokuapp.com/owners/${this.state.versusCode}`){
+                    return true
+                    }
+                })
+                losses = lossArray.length          
+            }
+           
+    
+        }
+        
         return(
             <div>
                 <input placeholder="Versus?" value={this.state.versus} onChange={this.updateVersus}/> 
                 <button onClick={this.findPlayer}>Submit</button>
-                <HeadToHeadStats games = {this.props.games} gamestats={this.props.gamestats} owner={this.props.id} againstCode = {this.state.versusCode} againstName = {this.state.versusName}/>
+                {/* <HeadToHeadStats games = {this.props.games} gamestats={this.props.gamestats} owner={this.props.id} againstCode = {this.state.versusCode} againstName = {this.state.versusName}/> */}
+                <h1>Record Against {this.state.versusName}: {wins}-{losses}</h1>
+                {/* <HeadToHeadStats versusName= {this.state.versusName} wins = {wins} losses = {losses}/> */}
             </div>
         )
     }
