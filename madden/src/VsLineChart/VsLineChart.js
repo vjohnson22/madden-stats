@@ -11,10 +11,20 @@ import {Line} from 'react-chartjs-2'
 class VsLineChart extends React.Component{
     render(){
         let labels
+        let playerData
+        let againstData
         if(this.props.label === undefined){
             labels = []
+            playerData=[]
+            againstData =[]
         } else {
             labels = this.props.label
+            playerData = this.props.playerStats.map(stats =>{
+                return stats[`${this.props.statsToTrend}`]
+            })
+            againstData = this.props.againstStats.map(stats =>{
+                return stats[`${this.props.statsToTrend}`]
+            })
         }
 
         var data = {
@@ -39,7 +49,7 @@ class VsLineChart extends React.Component{
                 pointRadius: 4,
                 pointHitRadius: 10,
                 // notice the gap in the data and the spanGaps: true
-                data: [65, 59, 80, 81, 56, 55, 40, ,60,55,30,78],
+                data: playerData,
                 spanGaps: true,
               }, {
                 label: this.props.versus,
@@ -61,7 +71,7 @@ class VsLineChart extends React.Component{
                 pointRadius: 4,
                 pointHitRadius: 10,
                 // notice the gap in the data and the spanGaps: false
-                data: [10, 20, 60, 95, 64, 78, 90,,70,40,70,89],
+                data: againstData,
                 spanGaps: false,
               }
           

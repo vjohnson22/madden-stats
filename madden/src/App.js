@@ -17,6 +17,7 @@ class App extends React.Component {
     
     axios.get('https://maddenstats.herokuapp.com/gamestats/')
         .then(res => {
+          res.data.sort((a,b)=> (a.id > b.id) ? 1 : -1)
             this.setState({gamestats:res.data})
         })
     axios.get('https://maddenstats.herokuapp.com/games/')
