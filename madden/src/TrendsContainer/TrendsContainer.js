@@ -70,7 +70,7 @@ class TrendsContainer extends React.Component{
                 return `Week ${game.week}, ${game.season}`
             })
         }
-            console.log(weekLabel)
+            // console.log(weekLabel)
         
         return(
             <div>

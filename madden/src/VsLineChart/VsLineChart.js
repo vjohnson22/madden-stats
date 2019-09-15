@@ -1,43 +1,53 @@
 import React from 'react'
 import {Line} from 'react-chartjs-2'
 
-
-
-  
-
-
-
-
 class VsLineChart extends React.Component{
     constructor() {
         super()
 
         this.state={
-            change:'',
+            labels:[],
+            playerData:[],
+            againstData:[]
             
             
         }
     }
-    // componentDidMount(){
-    //     if (this.props.againstStats === [])
-    //     this.setState({change:1})
-    // }            
+    componentDidMount(){
+        if (this.props.labels !== undefined){
+            this.setState({labels:this.props.label})
+        }else{
+            this.setState({labels: ['in progress']})
+        }
+
+        if (this.props.playerStats !== undefined){
+            this.setState({playerData:this.props.playerStats})
+        }else{
+            this.setState({playerData: [0]})
+        } 
+        if (this.props.againstStats !== undefined){
+            this.setState({againstData:this.props.againstStats})
+        }else{
+            this.setState({againstData: [0]})
+        }
+    }            
     render(){
-        console.log(this.props.playerStats)
+        // console.log(this.props.playerStats)
         let labels  
         let playerData  
         let againstData  
         
-        if (this.props.playerStats === undefined){
-            labels = []
-            playerData = []
-            againstData = []
+        if (this.props.playerStats === undefined || this.props.againstStats === undefined || this.props.label === undefined ){
+            labels = this.state.labels
+            playerData = this.state.playerData
+            againstData = this.state.againstData
+            
         }else {
             labels = this.props.label
             playerData = this.props.playerStats
             againstData = this.props.againstStats
         }
-        
+        // console.log(this.state.againstData)       
         
         
         var data = {
