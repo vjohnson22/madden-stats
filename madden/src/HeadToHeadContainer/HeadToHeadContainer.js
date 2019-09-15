@@ -3,6 +3,7 @@ import axios from 'axios'
 import HeadToHeadStats from '../HeadToHeadStats/HeadToHeadStats'
 import './HeadToHeadContainer.css'
 import Opponent from '../Opponent/Opponent'
+import TrendsContainer from '../TrendsContainer/TrendsContainer'
 
 class HeadToHeadContainer extends React.Component{
     constructor(){
@@ -121,6 +122,10 @@ class HeadToHeadContainer extends React.Component{
                     <HeadToHeadStats owner = {this.props.id} against ={this.state.versusName} againstCode = {this.state.versusCode} gamestats={this.props.gamestats} stat="turnovers"/>
                     <h2>Turnovers</h2>
                     <Opponent owner = {this.props.id} against ={this.state.versusName} againstCode = {this.state.versusCode} gamestats={this.props.gamestats} stat="turnovers"/>
+                </div>
+                <div>
+                    <h1>Trends</h1>
+                    <TrendsContainer owner_games = {this.props.owner_game_stats} id= {this.props.id} name= {this.props.name} against_games = {this.props.played_against} versus= {this.state.versusName} versusCode = {this.state.versusCode} gamestats = {this.props.gamestats}/>
                 </div>
             </div>
         )
