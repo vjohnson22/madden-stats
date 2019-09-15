@@ -5,6 +5,9 @@ import './HeadToHeadContainer.css'
 import Opponent from '../Opponent/Opponent'
 import TrendsContainer from '../TrendsContainer/TrendsContainer'
 
+
+
+
 class HeadToHeadContainer extends React.Component{
     constructor(){
         super()
@@ -17,6 +20,8 @@ class HeadToHeadContainer extends React.Component{
             switch:""
         }
     }
+    
+    
     updateVersus = (e) => {
         this.setState({versus:e.target.value})
     }
@@ -93,9 +98,11 @@ class HeadToHeadContainer extends React.Component{
            
     
         }
-        
+    
+
         return(
             <div>
+    
                 <input placeholder="Versus?" value={this.state.versus} onChange={this.updateVersus}/> 
                 <button onClick={this.findPlayer}>Submit</button>
                 {/* <HeadToHeadStats games = {this.props.games} gamestats={this.props.gamestats} owner={this.props.id} againstCode = {this.state.versusCode} againstName = {this.state.versusName}/> */}

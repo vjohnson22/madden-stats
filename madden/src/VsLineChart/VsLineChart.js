@@ -9,24 +9,37 @@ import {Line} from 'react-chartjs-2'
 
 
 class VsLineChart extends React.Component{
-    render(){
-        let labels
-        let playerData
-        let againstData
-        if(this.props.label === undefined){
-            labels = []
-            playerData=[]
-            againstData =[]
-        } else {
-            labels = this.props.label
-            playerData = this.props.playerStats.map(stats =>{
-                return stats[`${this.props.statsToTrend}`]
-            })
-            againstData = this.props.againstStats.map(stats =>{
-                return stats[`${this.props.statsToTrend}`]
-            })
-        }
+    constructor() {
+        super()
 
+        this.state={
+            change:'',
+            
+            
+        }
+    }
+    // componentDidMount(){
+    //     if (this.props.againstStats === [])
+    //     this.setState({change:1})
+    // }            
+    render(){
+        console.log(this.props.playerStats)
+        let labels  
+        let playerData  
+        let againstData  
+        
+        if (this.props.playerStats === undefined){
+            labels = []
+            playerData = []
+            againstData = []
+        }else {
+            labels = this.props.label
+            playerData = this.props.playerStats
+            againstData = this.props.againstStats
+        }
+        
+        
+        
         var data = {
             labels: labels,
             datasets: [{

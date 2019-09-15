@@ -18,12 +18,17 @@ class TrendsContainer extends React.Component{
             stats:'points'
         }
     }
+    updateStats(e){
+        this.setState({stats:'points'})
+    }
     render(){
         
         let games
         let weekLabel 
         let playerStats 
-        let againstStats 
+        let againstStats
+        let playerData
+        let againstData 
         if (this.props.game === undefined ){
             games = []
             
@@ -38,15 +43,20 @@ class TrendsContainer extends React.Component{
                 if (stats.owner === `https://maddenstats.herokuapp.com/owners/${this.props.id}`){
                     return true
                 }
+            })
+            playerData = playerStats.map(stats =>{
+                return stats[`${this.state.stats}`]
             })   
             againstStats = this.props.gamestats.filter(stats => {
                 if (stats.against === `https://maddenstats.herokuapp.com/owners/${this.props.id}`){
                     return true
                     }    
             })
+            againstData = againstStats.map(stats =>{
+                return stats[`${this.state.stats}`]
+            })
 
-            console.log(playerStats)
-            console.log(againstStats)
+            
             weekLabel = games.map( game => {
                 return `Week ${game.week}, ${game.season}`
             })
@@ -65,9 +75,9 @@ class TrendsContainer extends React.Component{
         return(
             <div>
                <input placeholder="Stats to Trend?" value={this.state.stats}></input>
-               <button>Submit</button> 
+               <button onClick={this.UpdateStats}>Submit</button> 
                {/* add functions to capture submit */}
-              <VsLineChart name={this.props.name} versus = {this.props.versus} label= {weekLabel} playerStats={playerStats} againstStats = {againstStats} statsToTrend={this.state.stats}/>
+              <VsLineChart name={this.props.name} versus = {this.props.versus} label= {weekLabel} playerStats={playerData} againstStats = {againstData} statsToTrend={this.state.stats}/>
             </div>
         )
     }
