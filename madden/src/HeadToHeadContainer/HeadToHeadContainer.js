@@ -125,7 +125,7 @@ class HeadToHeadContainer extends React.Component{
                 </div>
                 <div>
                     <h1>Trends</h1>
-                    <TrendsContainer owner_games = {this.props.owner_game_stats} id= {this.props.id} name= {this.props.name} against_games = {this.props.played_against} versus= {this.state.versusName} versusCode = {this.state.versusCode} gamestats = {this.props.gamestats}/>
+                    <TrendsContainer owner_games = {this.props.owner_game_stats} id= {this.props.id} name= {this.props.name} against_games = {this.props.played_against} versus= {this.state.versusName} versusCode = {this.state.versusCode} gamestats = {this.props.gamestats} game = {this.props.games}/>
                 </div>
             </div>
         )

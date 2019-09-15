@@ -1,5 +1,7 @@
 import React from 'react'
-import {Line} from 'react-chartjs-2'
+import VsLineChart from '../VsLineChart/VsLineChart'
+
+
 
 
 
@@ -10,75 +12,25 @@ import {Line} from 'react-chartjs-2'
 
 class TrendsContainer extends React.Component{
     render(){
-        var data = {
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-            datasets: [{
-                label: this.props.name,
-                fill: false,
-                lineTension: 0.1,
-                backgroundColor: "rgba(225,0,0,0.4)",
-                borderColor: "red", // The main line color
-                borderCapStyle: 'square',
-                borderDash: [], // try [5, 15] for instance
-                borderDashOffset: 0.0,
-                borderJoinStyle: 'miter',
-                pointBorderColor: "black",
-                pointBackgroundColor: "white",
-                pointBorderWidth: 1,
-                pointHoverRadius: 8,
-                pointHoverBackgroundColor: "yellow",
-                pointHoverBorderColor: "brown",
-                pointHoverBorderWidth: 2,
-                pointRadius: 4,
-                pointHitRadius: 10,
-                // notice the gap in the data and the spanGaps: true
-                data: [65, 59, 80, 81, 56, 55, 40, ,60,55,30,78],
-                spanGaps: true,
-              }, {
-                label: this.props.versus,
-                fill: true,
-                lineTension: 0.1,
-                backgroundColor: "rgba(167,105,0,0.4)",
-                borderColor: "rgb(167, 105, 0)",
-                borderCapStyle: 'butt',
-                borderDash: [],
-                borderDashOffset: 0.0,
-                borderJoinStyle: 'miter',
-                pointBorderColor: "white",
-                pointBackgroundColor: "black",
-                pointBorderWidth: 1,
-                pointHoverRadius: 8,
-                pointHoverBackgroundColor: "brown",
-                pointHoverBorderColor: "yellow",
-                pointHoverBorderWidth: 2,
-                pointRadius: 4,
-                pointHitRadius: 10,
-                // notice the gap in the data and the spanGaps: false
-                data: [10, 20, 60, 95, 64, 78, 90,,70,40,70,89],
-                spanGaps: false,
-              }
-          
-            ]
-          };
-          
-          // Notice the scaleLabel at the same level as Ticks
-          var options = {
-            scales: {
-                      yAxes: [{
-                          ticks: {
-                              beginAtZero:true
-                          },
-                          scaleLabel: {
-                               display: true,
-                               labelString: 'Moola',
-                               fontSize: 20 
-                            }
-                      }]            
-                  }  
-          };
+        let games
+        let weekLabel 
+        if (this.props.game === undefined){
+            games = []
+        }else if (this.props.versus === "All"){
+            games = this.props.game.filter( game => {
+                if (game.lost === `https://maddenstats.herokuapp.com/owners/${this.props.id}` || game.won === `https://maddenstats.herokuapp.com/owners/${this.props.id}`){
+                    return true
+                } 
+            })
+            weekLabel = games.map( game => {
+                return `Week ${game.week}, ${game.season}`
+            })
+        }
+            console.log(weekLabel)
+        
         return(
             <div>
-              <Line data = {data}/>
+              <VsLineChart name={this.props.name} versus = {this.props.versus} label= {weekLabel}/>
             </div>
         )
     }
