@@ -30,6 +30,9 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
+        <style>
+          @import url('https://fonts.googleapis.com/css?family=Farro&display=swap');
+        </style>
         <nav>
           <Link to= '/'>Standings</Link>
 
