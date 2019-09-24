@@ -6,30 +6,35 @@ class VsLineChart extends React.Component{
         super()
 
         this.state={
-            labels:[],
+            label:[],
             playerData:[],
             againstData:[]
             
             
         }
     }
-    componentDidMount(){
-        if (this.props.labels !== undefined){
-            this.setState({labels:this.props.label})
-        }else{
-            this.setState({labels: ['in progress']})
-        }
+    // componentDidMount(){
+    //     if (this.props.labels !== undefined){
+    //         this.setState({labels:this.props.label})
+    //     }else{
+    //         this.setState({labels: ['in progress']})
+    //     }
 
-        if (this.props.playerStats !== undefined){
-            this.setState({playerData:this.props.playerStats})
-        }else{
-            this.setState({playerData: [0]})
-        } 
-        if (this.props.againstStats !== undefined){
-            this.setState({againstData:this.props.againstStats})
-        }else{
-            this.setState({againstData: [0]})
-        }
+    //     if (this.props.playerStats !== undefined){
+    //         this.setState({playerData:this.props.playerStats})
+    //     }else{
+    //         this.setState({playerData: [0]})
+    //     } 
+    //     if (this.props.againstStats !== undefined){
+    //         this.setState({againstData:this.props.againstStats})
+    //     }else{
+    //         this.setState({againstData: [0]})
+    //     }
+    // }
+    componentDidMount() {
+        this.setState({label:this.props.label})
+        this.setState({playerData:this.playerStats})
+        this.setState({againstData:this.againstStats})
     }            
     render(){
         
@@ -37,7 +42,7 @@ class VsLineChart extends React.Component{
         
         
         var data = {
-            labels: this.props.label,
+            labels: this.state.label,
             datasets: [{
                 label: this.props.name,
                 fill: false,
@@ -58,7 +63,7 @@ class VsLineChart extends React.Component{
                 pointRadius: 4,
                 pointHitRadius: 10,
                 // notice the gap in the data and the spanGaps: true
-                data: this.props.playerStats,
+                data: this.state.playerData,
                 spanGaps: true,
               }, {
                 label: this.props.versus,
@@ -80,7 +85,7 @@ class VsLineChart extends React.Component{
                 pointRadius: 4,
                 pointHitRadius: 10,
                 // notice the gap in the data and the spanGaps: false
-                data: this.props.againstStats,
+                data: this.state.againstData,
                 spanGaps: false,
               }
           
@@ -104,10 +109,7 @@ class VsLineChart extends React.Component{
           };
           let chart 
         let loading = ['Loading']
-        // console.log(this.props.playerStats)
-        // let labels  
-        // let playerData  
-        // let againstData  
+        
         
         if (this.props.playerStats === undefined  ){
             // labels = this.state.labels

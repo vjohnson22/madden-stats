@@ -16,7 +16,9 @@ class TrendsContainer extends React.Component{
 
         this.state = {
             owner_games:[],
-            game:[]
+            game:[],
+            gamestats:[],
+            stats:'points'
         }
     }
     componentDidMount(){
@@ -24,10 +26,16 @@ class TrendsContainer extends React.Component{
             .then(res => {
                 this.setState({game:res.data})
             })
+
+        axios.get('https://maddenstats.herokuapp.com/gamestats/')
+            .then(res => {
+              res.data.sort((a,b)=> (a.id > b.id) ? 1 : -1)
+                this.setState({gamestats:res.data})
+            })            
     }
-    updateStats(e){
-        this.setState({stats:'points'})
-    }
+    // updateStats(e){
+    //     this.setState({stats:'points'})
+    // }
     render(){
         
         let games
@@ -45,12 +53,12 @@ class TrendsContainer extends React.Component{
             })
         }else if (this.props.versus === "All"){
             // this.props.game.sort((a,b)=> (a.id < b.id) ? 1 : -1)
-            games = this.props.game.filter( game => {
+            games = this.state.game.filter( game => {
                 if (game.lost === `https://maddenstats.herokuapp.com/owners/${this.props.id}` || game.won === `https://maddenstats.herokuapp.com/owners/${this.props.id}`){
                     return true
                 } 
             })
-            playerStats = this.props.gamestats.filter(stats => {
+            playerStats = this.state.gamestats.filter(stats => {
                 if (stats.owner === `https://maddenstats.herokuapp.com/owners/${this.props.id}`){
                     return true
                 }
@@ -58,7 +66,7 @@ class TrendsContainer extends React.Component{
             playerData = playerStats.map(stats =>{
                 return stats[`${this.state.stats}`]
             })   
-            againstStats = this.props.gamestats.filter(stats => {
+            againstStats = this.state.gamestats.filter(stats => {
                 if (stats.against === `https://maddenstats.herokuapp.com/owners/${this.props.id}`){
                     return true
                     }    
@@ -75,7 +83,7 @@ class TrendsContainer extends React.Component{
                 return <VsLineChart name={this.props.name} versus = {this.props.versus} label= {weekLabel} playerStats={playerData} againstStats = {againstData} statsToTrend={this.state.stats}/>
             })
         }else if (this.props.versus !== "All" ){
-            games = this.props.game.filter( game => {
+            games = this.state.game.filter( game => {
                 if ((game.lost === `https://maddenstats.herokuapp.com/owners/${this.props.id}` && game.won === `https://maddenstats.herokuapp.com/owners/${this.props.versusCode}`)||(game.lost === `https://maddenstats.herokuapp.com/owners/${this.props.versusCode}` && game.won === `https://maddenstats.herokuapp.com/owners/${this.props.id}`)){
                     return true
                 } 
@@ -91,8 +99,8 @@ class TrendsContainer extends React.Component{
         
         return(
             <div>
-               <input placeholder="Stats to Trend?" value={this.state.stats}></input>
-               <button onClick={this.UpdateStats}>Submit</button> 
+               {/* <input placeholder="Stats to Trend?" value={this.state.stats}></input>
+               <button onClick={this.UpdateStats}>Submit</button>  */}
                {/* add functions to capture submit */}
                 {chart}
             </div>
