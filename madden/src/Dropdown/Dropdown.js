@@ -9,12 +9,12 @@ constructor(){
 
  this.state = {
        displayMenu: false,
-       owners: []
+       owners: [],
+       versus:""
      };
+    }
 
-  
-
-};
+ 
 componentDidMount(){
     axios.get('https://maddenstats.herokuapp.com/owners/')
         .then( res => {
@@ -41,7 +41,7 @@ showDropdownMenu = (event) => {
 
   render() {
       let owners = this.state.owners.map( (owner, i) => {
-        return <li key={i} onClick={this.props.updateVersus} value={owner}>{owner}</li>
+        return <li key={i} onClick={this.props.updateVersus} >{owner}</li>
       })
     return (
         <div  className="dropdown" style = {{background:"red",width:"200px"}} >

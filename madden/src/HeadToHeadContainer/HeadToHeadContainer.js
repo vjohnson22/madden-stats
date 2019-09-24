@@ -23,12 +23,12 @@ class HeadToHeadContainer extends React.Component{
     
     
     updateVersus = (e) => {
-        
-        this.setState({versus:e.target.value})
+        let lower = e.target.innerText.toLowerCase()
+        this.setState({versus:lower})
         
     }
     findPlayer = (e) => {
-        e.preventDefault()
+        // e.preventDefault()
         if(this.state.versus.toLowerCase() === 'vic'){
             this.setState({versusCode:1, versusName: "Vic"})
             
@@ -42,9 +42,10 @@ class HeadToHeadContainer extends React.Component{
             this.setState({versusCode:5, versusName: "Arwin"})
         } else if (this.state.versus.toLowerCase() === 'jay'){
             this.setState({versusCode:6, versusName: "Jay"})
-        } else {
-            alert('Invalid name')
-    }
+        } else if (this.state.versus.toLowerCase() === 'all'){
+            this.setState({versusCode:'', versusName: "All"})
+    // need to fix it so that all works
+        }
 }
     componentDidMount(){
         this.forceUpdate()
@@ -104,7 +105,8 @@ class HeadToHeadContainer extends React.Component{
 
         return(
             <div>
-                {/* <div><Dropdown updateVersus={this.updateVersus}/></div> */}
+                <div><Dropdown updateVersus={this.updateVersus}/></div>
+                
                 <input placeholder="Versus?" value={this.state.versus} onChange={this.updateVersus}/> 
                 <button onClick={this.findPlayer}>Submit</button>
                 {/* <HeadToHeadStats games = {this.props.games} gamestats={this.props.gamestats} owner={this.props.id} againstCode = {this.state.versusCode} againstName = {this.state.versusName}/> */}
