@@ -29,9 +29,13 @@ class TrendsContainer extends React.Component{
         let againstStats
         let playerData
         let againstData 
+        let loading = ['Loading']
+        let chart
         if (this.props.game === undefined ){
             games = []
-            
+            chart = loading.map( load => {
+                return <h1>Loading</h1>
+            })
         }else if (this.props.versus === "All"){
             // this.props.game.sort((a,b)=> (a.id < b.id) ? 1 : -1)
             games = this.props.game.filter( game => {
@@ -60,6 +64,9 @@ class TrendsContainer extends React.Component{
             weekLabel = games.map( game => {
                 return `Week ${game.week}, ${game.season}`
             })
+            chart = loading.map( load => {
+                return <VsLineChart name={this.props.name} versus = {this.props.versus} label= {weekLabel} playerStats={playerData} againstStats = {againstData} statsToTrend={this.state.stats}/>
+            })
         }else if (this.props.versus !== "All" ){
             games = this.props.game.filter( game => {
                 if ((game.lost === `https://maddenstats.herokuapp.com/owners/${this.props.id}` && game.won === `https://maddenstats.herokuapp.com/owners/${this.props.versusCode}`)||(game.lost === `https://maddenstats.herokuapp.com/owners/${this.props.versusCode}` && game.won === `https://maddenstats.herokuapp.com/owners/${this.props.id}`)){
@@ -69,6 +76,9 @@ class TrendsContainer extends React.Component{
             weekLabel = games.map( game => {
                 return `Week ${game.week}, ${game.season}`
             })
+            chart = loading.map( load => {
+                return <VsLineChart name={this.props.name} versus = {this.props.versus} label= {weekLabel} playerStats={playerData} againstStats = {againstData} statsToTrend={this.state.stats}/>
+            })
         }
             // console.log(weekLabel)
         
@@ -77,7 +87,7 @@ class TrendsContainer extends React.Component{
                <input placeholder="Stats to Trend?" value={this.state.stats}></input>
                <button onClick={this.UpdateStats}>Submit</button> 
                {/* add functions to capture submit */}
-              <VsLineChart name={this.props.name} versus = {this.props.versus} label= {weekLabel} playerStats={playerData} againstStats = {againstData} statsToTrend={this.state.stats}/>
+                {chart}
             </div>
         )
     }

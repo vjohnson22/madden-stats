@@ -4,7 +4,7 @@ import HeadToHeadStats from '../HeadToHeadStats/HeadToHeadStats'
 import './HeadToHeadContainer.css'
 import Opponent from '../Opponent/Opponent'
 import TrendsContainer from '../TrendsContainer/TrendsContainer'
-
+import Dropdown from '../Dropdown/Dropdown'
 
 
 
@@ -23,7 +23,9 @@ class HeadToHeadContainer extends React.Component{
     
     
     updateVersus = (e) => {
+        
         this.setState({versus:e.target.value})
+        
     }
     findPlayer = (e) => {
         e.preventDefault()
@@ -102,7 +104,7 @@ class HeadToHeadContainer extends React.Component{
 
         return(
             <div>
-    
+                {/* <div><Dropdown updateVersus={this.updateVersus}/></div> */}
                 <input placeholder="Versus?" value={this.state.versus} onChange={this.updateVersus}/> 
                 <button onClick={this.findPlayer}>Submit</button>
                 {/* <HeadToHeadStats games = {this.props.games} gamestats={this.props.gamestats} owner={this.props.id} againstCode = {this.state.versusCode} againstName = {this.state.versusName}/> */}

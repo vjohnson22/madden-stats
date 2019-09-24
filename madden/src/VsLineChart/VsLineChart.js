@@ -32,26 +32,12 @@ class VsLineChart extends React.Component{
         }
     }            
     render(){
-        // console.log(this.props.playerStats)
-        let labels  
-        let playerData  
-        let againstData  
         
-        if (this.props.playerStats === undefined || this.props.againstStats === undefined || this.props.label === undefined ){
-            labels = this.state.labels
-            playerData = this.state.playerData
-            againstData = this.state.againstData
-            
-        }else {
-            labels = this.props.label
-            playerData = this.props.playerStats
-            againstData = this.props.againstStats
-        }
         // console.log(this.state.againstData)       
         
         
         var data = {
-            labels: labels,
+            labels: this.props.label,
             datasets: [{
                 label: this.props.name,
                 fill: false,
@@ -72,7 +58,7 @@ class VsLineChart extends React.Component{
                 pointRadius: 4,
                 pointHitRadius: 10,
                 // notice the gap in the data and the spanGaps: true
-                data: playerData,
+                data: this.props.playerStats,
                 spanGaps: true,
               }, {
                 label: this.props.versus,
@@ -94,7 +80,7 @@ class VsLineChart extends React.Component{
                 pointRadius: 4,
                 pointHitRadius: 10,
                 // notice the gap in the data and the spanGaps: false
-                data: againstData,
+                data: this.props.againstStats,
                 spanGaps: false,
               }
           
@@ -116,9 +102,32 @@ class VsLineChart extends React.Component{
                       }]            
                   }  
           };
+          let chart 
+        let loading = ['Loading']
+        // console.log(this.props.playerStats)
+        // let labels  
+        // let playerData  
+        // let againstData  
+        
+        if (this.props.playerStats === undefined  ){
+            // labels = this.state.labels
+            // playerData = this.state.playerData
+            // againstData = this.state.againstData
+            chart = loading.map( load => {
+                return (<h1 key = {load}>Loading</h1>)
+            }) 
+        }else {
+            
+            chart = loading.map( load => {
+                return (<Line key = {load} data = {data}/>)
+            })
+            
+        }
+        console.log(this.props.playerStats)
         return(
             <div>
-              <Line data = {data}/>
+              {/* <Line data = {data}/> */}
+              {chart}
             </div>
         )
     }
