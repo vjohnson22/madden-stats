@@ -8,7 +8,7 @@ class Owner extends React.Component{
         super()
 
         this.state = {
-            versus:""
+            
         }
     }
     componentDidMount(){

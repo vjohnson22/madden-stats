@@ -47,9 +47,7 @@ class HeadToHeadContainer extends React.Component{
     // need to fix it so that all works
         }
 }
-    componentDidMount(){
-        this.forceUpdate()
-    }
+    
         
     render(){
         let wins
@@ -109,7 +107,6 @@ class HeadToHeadContainer extends React.Component{
                 
                 <input placeholder="Versus?" value={this.state.versus} onChange={this.updateVersus}/> 
                 <button onClick={this.findPlayer}>Submit</button>
-                {/* <HeadToHeadStats games = {this.props.games} gamestats={this.props.gamestats} owner={this.props.id} againstCode = {this.state.versusCode} againstName = {this.state.versusName}/> */}
                 <h1>Record Against {this.state.versusName}: {wins}-{losses}</h1>
                 <div className='grids'>
                     <h1>{this.props.name}</h1>

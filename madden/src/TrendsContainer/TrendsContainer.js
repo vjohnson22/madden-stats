@@ -1,6 +1,6 @@
 import React from 'react'
 import VsLineChart from '../VsLineChart/VsLineChart'
-
+import axios from 'axios'
 
 
 
@@ -15,8 +15,15 @@ class TrendsContainer extends React.Component{
         super()
 
         this.state = {
-            stats:'points'
+            owner_games:[],
+            game:[]
         }
+    }
+    componentDidMount(){
+        axios.get(`https://maddenstats.herokuapp.com/games`)
+            .then(res => {
+                this.setState({game:res.data})
+            })
     }
     updateStats(e){
         this.setState({stats:'points'})
@@ -31,7 +38,7 @@ class TrendsContainer extends React.Component{
         let againstData 
         let loading = ['Loading']
         let chart
-        if (this.props.game === undefined ){
+        if (this.state.game === undefined ){
             games = []
             chart = loading.map( load => {
                 return <h1>Loading</h1>
