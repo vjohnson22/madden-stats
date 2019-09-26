@@ -4,7 +4,7 @@ import HeadToHeadStats from '../HeadToHeadStats/HeadToHeadStats'
 import './HeadToHeadContainer.css'
 import Opponent from '../Opponent/Opponent'
 import TrendsContainer from '../TrendsContainer/TrendsContainer'
-
+import Dropdown from '../Dropdown/Dropdown'
 
 
 
@@ -23,10 +23,12 @@ class HeadToHeadContainer extends React.Component{
     
     
     updateVersus = (e) => {
-        this.setState({versus:e.target.value})
+        let lower = e.target.innerText.toLowerCase()
+        this.setState({versus:lower})
+        
     }
     findPlayer = (e) => {
-        e.preventDefault()
+        // e.preventDefault()
         if(this.state.versus.toLowerCase() === 'vic'){
             this.setState({versusCode:1, versusName: "Vic"})
             
@@ -40,13 +42,12 @@ class HeadToHeadContainer extends React.Component{
             this.setState({versusCode:5, versusName: "Arwin"})
         } else if (this.state.versus.toLowerCase() === 'jay'){
             this.setState({versusCode:6, versusName: "Jay"})
-        } else {
-            alert('Invalid name')
-    }
+        } else if (this.state.versus.toLowerCase() === 'all'){
+            this.setState({versusCode:'', versusName: "All"})
+    // need to fix it so that all works
+        }
 }
-    componentDidMount(){
-        this.forceUpdate()
-    }
+    
         
     render(){
         let wins
@@ -102,10 +103,10 @@ class HeadToHeadContainer extends React.Component{
 
         return(
             <div>
-    
+                <div><Dropdown updateVersus={this.updateVersus}/></div>
+                
                 <input placeholder="Versus?" value={this.state.versus} onChange={this.updateVersus}/> 
                 <button onClick={this.findPlayer}>Submit</button>
-                {/* <HeadToHeadStats games = {this.props.games} gamestats={this.props.gamestats} owner={this.props.id} againstCode = {this.state.versusCode} againstName = {this.state.versusName}/> */}
                 <h1>Record Against {this.state.versusName}: {wins}-{losses}</h1>
                 <div className='grids'>
                     <h1>{this.props.name}</h1>
@@ -133,6 +134,7 @@ class HeadToHeadContainer extends React.Component{
                 <div>
                     <h1>Trends</h1>
                     <TrendsContainer owner_games = {this.props.owner_game_stats} id= {this.props.id} name= {this.props.name} against_games = {this.props.played_against} versus= {this.state.versusName} versusCode = {this.state.versusCode} gamestats = {this.props.gamestats} game = {this.props.games}/>
+                    {/* <TrendsContainer owner_games = {this.props.owner_game_stats} id= {this.props.id} name= {this.props.name} against_games = {this.props.played_against} versus= {this.state.versusName} versusCode = {this.state.versusCode} gamestats = {this.props.gamestats} game = {this.props.games}/> */}
                 </div>
             </div>
         )

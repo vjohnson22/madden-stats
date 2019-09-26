@@ -6,52 +6,43 @@ class VsLineChart extends React.Component{
         super()
 
         this.state={
-            labels:[],
+            label:[],
             playerData:[],
             againstData:[]
             
             
         }
     }
-    componentDidMount(){
-        if (this.props.labels !== undefined){
-            this.setState({labels:this.props.label})
-        }else{
-            this.setState({labels: ['in progress']})
-        }
+    // componentDidMount(){
+    //     if (this.props.labels !== undefined){
+    //         this.setState({labels:this.props.label})
+    //     }else{
+    //         this.setState({labels: ['in progress']})
+    //     }
 
-        if (this.props.playerStats !== undefined){
-            this.setState({playerData:this.props.playerStats})
-        }else{
-            this.setState({playerData: [0]})
-        } 
-        if (this.props.againstStats !== undefined){
-            this.setState({againstData:this.props.againstStats})
-        }else{
-            this.setState({againstData: [0]})
-        }
-    }            
+    //     if (this.props.playerStats !== undefined){
+    //         this.setState({playerData:this.props.playerStats})
+    //     }else{
+    //         this.setState({playerData: [0]})
+    //     } 
+    //     if (this.props.againstStats !== undefined){
+    //         this.setState({againstData:this.props.againstStats})
+    //     }else{
+    //         this.setState({againstData: [0]})
+    //     }
+    // }
+    // componentDidMount() {
+    //     this.setState({label:this.props.label})
+    //     this.setState({playerData:this.playerStats})
+    //     this.setState({againstData:this.againstStats})
+    // }            
     render(){
-        // console.log(this.props.playerStats)
-        let labels  
-        let playerData  
-        let againstData  
         
-        if (this.props.playerStats === undefined || this.props.againstStats === undefined || this.props.label === undefined ){
-            labels = this.state.labels
-            playerData = this.state.playerData
-            againstData = this.state.againstData
-            
-        }else {
-            labels = this.props.label
-            playerData = this.props.playerStats
-            againstData = this.props.againstStats
-        }
         // console.log(this.state.againstData)       
         
         
         var data = {
-            labels: labels,
+            labels: this.props.label,
             datasets: [{
                 label: this.props.name,
                 fill: false,
@@ -72,7 +63,7 @@ class VsLineChart extends React.Component{
                 pointRadius: 4,
                 pointHitRadius: 10,
                 // notice the gap in the data and the spanGaps: true
-                data: playerData,
+                data: this.props.playerStats,
                 spanGaps: true,
               }, {
                 label: this.props.versus,
@@ -94,7 +85,7 @@ class VsLineChart extends React.Component{
                 pointRadius: 4,
                 pointHitRadius: 10,
                 // notice the gap in the data and the spanGaps: false
-                data: againstData,
+                data: this.props.againstStats,
                 spanGaps: false,
               }
           
@@ -116,9 +107,29 @@ class VsLineChart extends React.Component{
                       }]            
                   }  
           };
+        //   let chart 
+        // let loading = ['Loading']
+        
+        
+        // if (this.props.playerStats === undefined  ){
+        //     // labels = this.state.labels
+        //     // playerData = this.state.playerData
+        //     // againstData = this.state.againstData
+        //     chart = loading.map( load => {
+        //         return (<h1 key = {load}>Loading</h1>)
+        //     }) 
+        // }else {
+            
+        //     chart = loading.map( load => {
+        //         return (<Line key = {load} data = {data}/>)
+        //     })
+            
+        // }
+        // console.log(this.props.playerStats)
         return(
             <div>
               <Line data = {data}/>
+              {/* {chart} */}
             </div>
         )
     }
