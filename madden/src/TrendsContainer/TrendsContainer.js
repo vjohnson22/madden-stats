@@ -20,7 +20,9 @@ class TrendsContainer extends React.Component{
             gamestats:[],
             stats:'points',
             label:"",
-            loading:[]
+            loading:[],
+            playerData: []
+
         }
     }
     componentDidMount(){
@@ -46,46 +48,43 @@ class TrendsContainer extends React.Component{
                 this.setState({label:weekLabel})
                     this.setState({loading:[1]})
                 })
-        // }else if (this.props.versus !== "All" ){
-        //    let games = this.state.game.filter( game => {
-        //                 if ((game.lost === `https://maddenstats.herokuapp.com/owners/${this.props.id}` && game.won === `https://maddenstats.herokuapp.com/owners/${this.props.versusCode}`)||(game.lost === `https://maddenstats.herokuapp.com/owners/${this.props.versusCode}` && game.won === `https://maddenstats.herokuapp.com/owners/${this.props.id}`)){
-        //                     return true
-        //                 } 
-        //             })
-        //             let weekLabel = games.map( game => {
-        //                 return `Week ${game.week}, ${game.season}`
-        //             })
-        //             console.log(weekLabel)
-        //             this.setState({label:weekLabel})
-        //             this.setState({loading:[2]})
-                    
-        //         }
-            
-                
-            //     }else if (this.props.versus !== "All" ){
-            //         games = this.state.game.filter( game => {
-            //             if ((game.lost === `https://maddenstats.herokuapp.com/owners/${this.props.id}` && game.won === `https://maddenstats.herokuapp.com/owners/${this.props.versusCode}`)||(game.lost === `https://maddenstats.herokuapp.com/owners/${this.props.versusCode}` && game.won === `https://maddenstats.herokuapp.com/owners/${this.props.id}`)){
-            //                 return true
-            //             } 
-            //         })
-            //         weekLabel = games.map( game => {
-            //             return `Week ${game.week}, ${game.season}`
-            //         })
-            //         chart = loading.map( load => {
-            //             return <VsLineChart name={this.props.name} versus = {this.props.versus} label= {weekLabel} playerStats={playerData} againstStats = {againstData} statsToTrend={this.state.stats}/>
-            //         })
-            // })
-                
         axios.get('https://maddenstats.herokuapp.com/gamestats/')
             .then(res => {
-              res.data.sort((a,b)=> (a.id > b.id) ? 1 : -1)
+                res.data.sort((a,b)=> (a.id > b.id) ? 1 : -1)
                 this.setState({gamestats:res.data})
-            })            
+            })
+            // .then(() => {          
+                                          
+                // let playerStats = this.state.gamestats.filter(stats => { 
+                //     return stats.owner === `https://maddenstats.herokuapp.com/owners/${this.props.id}`
+                // })                                                                    
+                // .map(stats =>{
+                //     return stats[`${this.state.stats}`]
+                //     })
+                    
+                // this.setState({playerData:playerStats})
+                
+
+                        // let againstStats = this.state.gamestats.filter(stats => {
+                        //     if (stats.against === `https://maddenstats.herokuapp.com/owners/${this.props.id}`){
+                        //         return true
+                        //         }    
+                        // })
+                        // let againstData = againstStats.map(stats =>{
+                        //     return stats[`${this.state.stats}`]
+                        // })
+            
+                        
+                        
+                        
+            
+            // })
+                
+             
+                    
     
         }
-    // updateStats(e){
-    //     this.setState({stats:'points'})
-    // }
+    
 componentDidUpdate() {
  if (this.props.versus !== "All" ){
        let games = this.state.game.filter( game => {
@@ -106,6 +105,22 @@ componentDidUpdate() {
                 // this.setState({loading:[2]})
                 
             }
+            
+if( this.state.playerData.length === 0){
+            let playerStats = this.state.gamestats.filter(stats => { 
+                
+                return stats.owner === `https://maddenstats.herokuapp.com/owners/${this.props.id}`
+            })                                                                    
+            .map(stats =>{
+                
+                return stats[`${this.state.stats}`]
+                })
+                if (JSON.stringify(this.state.playerData) !== JSON.stringify(playerStats)){
+                    this.setState({playerData:playerStats})
+                } 
+            
+}
+                        
 }
 
     render(){
@@ -170,8 +185,8 @@ componentDidUpdate() {
             // console.log(weekLabel)
          
         let chart = this.state.loading.map( load => {
-            return <VsLineChart name={this.props.name} versus = {this.props.versus} label= {this.state.label}/> 
-            // playerStats={playerData} againstStats = {againstData} statsToTrend={this.state.stats}/>
+            return <VsLineChart name={this.props.name} versus = {this.props.versus} label= {this.state.label} playerStats={this.state.playerData}/> 
+            //  againstStats = {againstData} statsToTrend={this.state.stats}/>
         })
 
         return(

@@ -63,7 +63,7 @@ class VsLineChart extends React.Component{
                 pointRadius: 4,
                 pointHitRadius: 10,
                 // notice the gap in the data and the spanGaps: true
-                data: this.state.playerData,
+                data: this.props.playerStats,
                 spanGaps: true,
               }, {
                 label: this.props.versus,
@@ -128,7 +128,7 @@ class VsLineChart extends React.Component{
         // console.log(this.props.playerStats)
         return(
             <div>
-              {/* <Line data = {data}/> */}
+              <Line data = {data}/>
               {/* {chart} */}
             </div>
         )
