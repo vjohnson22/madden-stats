@@ -31,18 +31,18 @@ class VsLineChart extends React.Component{
     //         this.setState({againstData: [0]})
     //     }
     // }
-    componentDidMount() {
-        this.setState({label:this.props.label})
-        this.setState({playerData:this.playerStats})
-        this.setState({againstData:this.againstStats})
-    }            
+    // componentDidMount() {
+    //     this.setState({label:this.props.label})
+    //     this.setState({playerData:this.playerStats})
+    //     this.setState({againstData:this.againstStats})
+    // }            
     render(){
         
         // console.log(this.state.againstData)       
         
         
         var data = {
-            labels: this.state.label,
+            labels: this.props.label,
             datasets: [{
                 label: this.props.name,
                 fill: false,
@@ -107,29 +107,29 @@ class VsLineChart extends React.Component{
                       }]            
                   }  
           };
-          let chart 
-        let loading = ['Loading']
+        //   let chart 
+        // let loading = ['Loading']
         
         
-        if (this.props.playerStats === undefined  ){
-            // labels = this.state.labels
-            // playerData = this.state.playerData
-            // againstData = this.state.againstData
-            chart = loading.map( load => {
-                return (<h1 key = {load}>Loading</h1>)
-            }) 
-        }else {
+        // if (this.props.playerStats === undefined  ){
+        //     // labels = this.state.labels
+        //     // playerData = this.state.playerData
+        //     // againstData = this.state.againstData
+        //     chart = loading.map( load => {
+        //         return (<h1 key = {load}>Loading</h1>)
+        //     }) 
+        // }else {
             
-            chart = loading.map( load => {
-                return (<Line key = {load} data = {data}/>)
-            })
+        //     chart = loading.map( load => {
+        //         return (<Line key = {load} data = {data}/>)
+        //     })
             
-        }
-        console.log(this.props.playerStats)
+        // }
+        // console.log(this.props.playerStats)
         return(
             <div>
               {/* <Line data = {data}/> */}
-              {chart}
+              {/* {chart} */}
             </div>
         )
     }
