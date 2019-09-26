@@ -21,7 +21,8 @@ class TrendsContainer extends React.Component{
             stats:'points',
             label:"",
             loading:[],
-            playerData: []
+            playerData: [],
+            againstData: []
 
         }
     }
@@ -53,32 +54,10 @@ class TrendsContainer extends React.Component{
                 res.data.sort((a,b)=> (a.id > b.id) ? 1 : -1)
                 this.setState({gamestats:res.data})
             })
-            // .then(() => {          
-                                          
-                // let playerStats = this.state.gamestats.filter(stats => { 
-                //     return stats.owner === `https://maddenstats.herokuapp.com/owners/${this.props.id}`
-                // })                                                                    
-                // .map(stats =>{
-                //     return stats[`${this.state.stats}`]
-                //     })
-                    
-                // this.setState({playerData:playerStats})
-                
-
-                        // let againstStats = this.state.gamestats.filter(stats => {
-                        //     if (stats.against === `https://maddenstats.herokuapp.com/owners/${this.props.id}`){
-                        //         return true
-                        //         }    
-                        // })
-                        // let againstData = againstStats.map(stats =>{
-                        //     return stats[`${this.state.stats}`]
-                        // })
-            
-                        
                         
                         
             
-            // })
+            
                 
              
                     
@@ -102,7 +81,7 @@ componentDidUpdate() {
                 }
                 
                 
-                // this.setState({loading:[2]})
+             
                 
             }
             
@@ -114,11 +93,26 @@ if( this.state.playerData.length === 0){
             .map(stats =>{
                 
                 return stats[`${this.state.stats}`]
-                })
-                if (JSON.stringify(this.state.playerData) !== JSON.stringify(playerStats)){
+            })
+            if (JSON.stringify(this.state.playerData) !== JSON.stringify(playerStats)){
                     this.setState({playerData:playerStats})
-                } 
+            }
             
+            let againstStats = this.state.gamestats.filter(stats => {
+                return stats.against === `https://maddenstats.herokuapp.com/owners/${this.props.id}`
+            })
+            .map(stats =>{
+                        return stats[`${this.state.stats}`]
+            })
+            if (JSON.stringify(this.state.againstData) !== JSON.stringify(againstStats)){
+                this.setState({againstData:againstStats})
+        }
+            
+}
+
+if (this.props.versus !== "All" ){
+
+
 }
                         
 }
@@ -185,8 +179,8 @@ if( this.state.playerData.length === 0){
             // console.log(weekLabel)
          
         let chart = this.state.loading.map( load => {
-            return <VsLineChart name={this.props.name} versus = {this.props.versus} label= {this.state.label} playerStats={this.state.playerData}/> 
-            //  againstStats = {againstData} statsToTrend={this.state.stats}/>
+            return <VsLineChart name={this.props.name} versus = {this.props.versus} label= {this.state.label} playerStats={this.state.playerData} againstStats = {this.state.againstData}/> 
+            //   statsToTrend={this.state.stats}/>
         })
 
         return(

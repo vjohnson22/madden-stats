@@ -85,7 +85,7 @@ class VsLineChart extends React.Component{
                 pointRadius: 4,
                 pointHitRadius: 10,
                 // notice the gap in the data and the spanGaps: false
-                data: this.state.againstData,
+                data: this.props.againstStats,
                 spanGaps: false,
               }
           
