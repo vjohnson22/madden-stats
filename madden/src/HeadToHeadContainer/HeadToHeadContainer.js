@@ -104,7 +104,7 @@ class HeadToHeadContainer extends React.Component{
 
         return(
             <div>
-                <div><Dropdown updateVersus={this.updateVersus}/></div>
+                <div><Dropdown updateVersus={this.updateVersus} id={this.props.id}/></div>
                 
                 {/* <input placeholder="Versus?" value={this.state.versus} onChange={this.updateVersus}/> 
                 <button onClick={this.findPlayer}>Submit</button> */}
