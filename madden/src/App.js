@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {Route, Link} from 'react-router-dom'
 
-import StandingsContainer from './StandingsContainer/StandingsContainer'
+import Standings from './Standings/Standings'
 import Owner from './Owner/Owner'
 import axios from 'axios'
 
@@ -38,7 +38,7 @@ class App extends React.Component {
 
         </nav>
         <main>
-          <Route exact path = '/' component = {StandingsContainer}/>
+          <Route exact path = '/' component = {Standings}/>
           <Route path = '/owners' render = {routerProps => <Owner games={this.state.games} gamestats={this.state.gamestats} {...routerProps}/>}/>
         </main>
       </div>
