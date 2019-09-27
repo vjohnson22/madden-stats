@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import HeadToHeadContainer from '../HeadToHeadContainer/HeadToHeadContainer'
-
+import './Owner.css'
 
 class Owner extends React.Component{
     constructor(){
@@ -23,11 +23,13 @@ class Owner extends React.Component{
         
         return(
             <div>
-                <div>
-                    <h1>{this.state.name}</h1>
-     
+                <div className='head'>
+                    <h1 className='name'>{this.state.name}</h1>
+                    <img className='teamPic' src = {this.state.photo_url}/>
+                    
+                 </div>
                     <HeadToHeadContainer {...this.state} gamestats= {this.props.gamestats} games = {this.props.games}/>
-                </div>
+                
                 
             </div>
         )
