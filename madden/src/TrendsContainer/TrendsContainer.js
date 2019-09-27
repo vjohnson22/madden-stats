@@ -149,9 +149,6 @@ if (this.props.versus !== "All" ){
 
         return(
             <div>
-               {/* <input placeholder="Stats to Trend?" value={this.state.stats}></input>
-               <button onClick={this.UpdateStats}>Submit</button>  */}
-               {/* add functions to capture submit */}
                 {chart}
             </div>
         )

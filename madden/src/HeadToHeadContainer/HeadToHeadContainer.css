@@ -7,3 +7,12 @@
 .grids *{
     border: 4px solid black;
 } */
+
+.page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.chart{
+    max-width: 100%;
+}
