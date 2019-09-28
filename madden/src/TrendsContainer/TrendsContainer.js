@@ -78,7 +78,7 @@ componentDidUpdate() {
                 
             }
             
-if( this.state.playerData.length === 0){
+if( this.props.versus === "All"){
             let playerStats = this.state.gamestats.filter(stats => { 
                 
                 return stats.owner === `https://maddenstats.herokuapp.com/owners/${this.props.id}`
