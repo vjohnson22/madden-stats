@@ -54,14 +54,7 @@ class TrendsContainer extends React.Component{
                 res.data.sort((a,b)=> (a.id > b.id) ? 1 : -1)
                 this.setState({gamestats:res.data})
             })
-                        
-                        
-            
-            
-                
-             
-                    
-    
+                                    
         }
     
 componentDidUpdate() {
@@ -85,14 +78,14 @@ componentDidUpdate() {
                 
             }
             
-if( this.state.playerData.length === 0){
+if( this.props.versus === "All"){
             let playerStats = this.state.gamestats.filter(stats => { 
                 
                 return stats.owner === `https://maddenstats.herokuapp.com/owners/${this.props.id}`
             })                                                                    
             .map(stats =>{
                 
-                return stats[`${this.state.stats}`]
+                return stats[`${this.props.stat}`]
             })
             if (JSON.stringify(this.state.playerData) !== JSON.stringify(playerStats)){
                     this.setState({playerData:playerStats})
@@ -102,7 +95,7 @@ if( this.state.playerData.length === 0){
                 return stats.against === `https://maddenstats.herokuapp.com/owners/${this.props.id}`
             })
             .map(stats =>{
-                        return stats[`${this.state.stats}`]
+                        return stats[`${this.props.stat}`]
             })
             if (JSON.stringify(this.state.againstData) !== JSON.stringify(againstStats)){
                 this.setState({againstData:againstStats})
@@ -117,7 +110,7 @@ if (this.props.versus !== "All" ){
     })                                                                    
     .map(stats =>{
         
-        return stats[`${this.state.stats}`]
+        return stats[`${this.props.stat}`]
     })
     if (JSON.stringify(this.state.playerData) !== JSON.stringify(playerStats)){
             this.setState({playerData:playerStats})
@@ -127,7 +120,7 @@ if (this.props.versus !== "All" ){
         return (stats.against === `https://maddenstats.herokuapp.com/owners/${this.props.id}` && stats.owner === `https://maddenstats.herokuapp.com/owners/${this.props.versusCode}`)
     })
     .map(stats =>{
-                return stats[`${this.state.stats}`]
+                return stats[`${this.props.stat}`]
     })
     if (JSON.stringify(this.state.againstData) !== JSON.stringify(againstStats)){
         this.setState({againstData:againstStats})

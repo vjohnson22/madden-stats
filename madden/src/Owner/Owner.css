@@ -1,0 +1,15 @@
+.head{
+    display: flex;
+    justify-content: space-around;
+    max-height: 100px;
+}
+
+.teamPic {
+    max-width: 100%;
+    max-height: 100px;
+}
+
+.name {
+    font-size: 60px;
+    /* font-weight: 900; */
+}
