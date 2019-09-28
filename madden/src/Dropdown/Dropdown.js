@@ -79,14 +79,8 @@ showDropdownMenu = (event) => {
 
           { this.state.displayMenu ? (
           <ul>
-              <li>All</li>
-         {/* <li><a className="active" href="#Create Page">Create Page</a></li>
-         <li><a href="#Manage Pages">Manage Pages</a></li>
-         <li><a href="#Create Ads">Create Ads</a></li>
-         <li><a href="#Manage Ads">Manage Ads</a></li>
-         <li><a href="#Activity Logs">Activity Logs</a></li>
-         <li><a href="#Setting">Setting</a></li>
-         <li><a href="#Log Out">Log Out</a></li> */}
+              <li onClick={this.props.updateVersus} >All</li>
+         
             {owners}
           </ul>
         ):
