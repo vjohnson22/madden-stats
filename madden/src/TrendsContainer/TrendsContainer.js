@@ -100,6 +100,21 @@ if( this.props.versus === "All"){
             if (JSON.stringify(this.state.againstData) !== JSON.stringify(againstStats)){
                 this.setState({againstData:againstStats})
             }
+
+            let games = this.state.game.filter( game => {
+                if (game.lost === `https://maddenstats.herokuapp.com/owners/${this.props.id}` || game.won === `https://maddenstats.herokuapp.com/owners/${this.props.id}`){
+                    return true
+                } 
+            })            
+           
+                   
+            let weekLabel = games.map( game => {
+                return `Week ${game.week}, ${game.season}`
+                })
+            
+            if (JSON.stringify(this.state.label) !== JSON.stringify(weekLabel)){
+                   this.setState({label:weekLabel})
+             }    
             
 }
 
