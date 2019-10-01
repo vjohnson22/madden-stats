@@ -127,8 +127,8 @@ class PlayerStats extends React.Component{
                     times_sacked_avg: times_sacked_avg,
                     pass_complete_avg: pass_complete,
                     pass_attempt_avg: pass_attempt_avg,
-                    rush_yards_avg: rush_tds_avg,
-                    rush_tds_avg: rush_tds,
+                    rush_yards_avg: rush_yards_avg,
+                    rush_tds_avg: rush_tds_avg,
                     fumbled_avg: fumbled_avg,
                     break_tackle_avg: break_tackle_avg, 
                     receptions_avg: receptions_avg,
@@ -151,37 +151,47 @@ class PlayerStats extends React.Component{
     render(){
         let placeholder = ['placeholder']
         let table = placeholder.map( table => {
-            if(this.props.position === 'QB' || this.props.position === 'WR'  || this.props.position === 'TE'  || this.props.position === 'HB'  || this.props.position === 'FB'){
+            if(this.props.position === 'QB' ){
                 return (
                     <div>
-                        <h1>Avg. Pass Yards: {this.state.pass_yards_avg}</h1>
-                        <h1>Avg. Pass Tds: {this.state.pass_td_avg}</h1>
-                        <h1>Avg. Times Sacked: {this.state.times_sacked_avg}</h1>
-                        <h1>Avg. Passes Completed: {this.state.pass_complete_avg}</h1>
-                        <h1>Avg. Passes Attempted:{this.state.pass_attempt_avg}</h1>
-                        <h1>Avg. Rush Yards: {this.state.rush_yards_avg}</h1>
-                        <h1>Avg. Rushing Tds{this.state.rush_tds_avg}</h1>
-                        <h1>Avg. Fumbles: {this.state.fumbled_avg}</h1>
-                        <h1>Avg. Broken Tackles: {this.state.break_tackle_avg}</h1>
-                        <h1>Avg. Receptions: {this.state.receptions_avg}</h1>
-                        <h1>Avg. Receiving Yards: {this.state.receiving_yards_avg}</h1>
-                        <h1>Avg Receiving Tds: {this.state.receiving_tds_avg}</h1>
+                        <h2>Pass Yards: {this.state.pass_yards_avg}</h2>
+                        <h2>Pass Tds: {this.state.pass_td_avg}</h2>
+                        <h2>Times Sacked: {this.state.times_sacked_avg}</h2>
+                        <h2>Passes Completed: {this.state.pass_complete_avg}</h2>
+                        <h2>Passes Attempted:{this.state.pass_attempt_avg}</h2>
+                        <h2>Rush Yards: {this.state.rush_yards_avg}</h2>
+                        <h2>Rushing Tds: {this.state.rush_tds_avg}</h2>
+                        <h2>Fumbles: {this.state.fumbled_avg}</h2>
+                        <h2>Broken Tackles: {this.state.break_tackle_avg}</h2>
+                    </div>
+                )
+            }else if(this.props.position === 'WR'  || this.props.position === 'TE'  || this.props.position === 'HB'  || this.props.position === 'FB'){
+                return (
+                    <div>
+                        <h2>Rush Yards: {this.state.rush_yards_avg}</h2>
+                        <h2>Rushing Tds: {this.state.rush_tds_avg}</h2>
+                        <h2>Fumbles: {this.state.fumbled_avg}</h2>
+                        <h2>Broken Tackles: {this.state.break_tackle_avg}</h2>
+                        <h2>Receptions: {this.state.receptions_avg}</h2>
+                        <h2>Receiving Yards: {this.state.receiving_yards_avg}</h2>
+                        <h2>Receiving Tds: {this.state.receiving_tds_avg}</h2>
                     </div>
                 )
             }else{
                 return(
                     <div>
-                        <h1>Avg. Tackles: {this.state.tackles_avg}</h1>
-                        <h1>Avg. Tackles for Loss: {this.state.tfl_avg}</h1>
-                        <h1>Avg. Sacks: {this.state.sacks_avg}</h1>
-                        <h1>Avg. Interceptions: {this.state.interceptions_avg}</h1>
-                        <h1>Avg. Defensive Tds: {this.state.defensive_tds_avg}</h1>
+                        <h2>Avg. Tackles: {this.state.tackles_avg}</h2>
+                        <h2>Avg. Tackles for Loss: {this.state.tfl_avg}</h2>
+                        <h2>Avg. Sacks: {this.state.sacks_avg}</h2>
+                        <h2>Avg. Interceptions: {this.state.interceptions_avg}</h2>
+                        <h2>Avg. Defensive Tds: {this.state.defensive_tds_avg}</h2>
                     </div>        
                 )
             }
         })
         return(
             <div>
+                <h1>User Game Averages</h1>
                 {table}
             </div>
         )
