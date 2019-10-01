@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
 import {Route, Link} from 'react-router-dom'
+import axios from 'axios'
 
 import Standings from './Standings/Standings'
 import Owner from './Owner/Owner'
-import axios from 'axios'
+import Players from './Players/Players'
+import Player from './Player/Player'
 
 class App extends React.Component {
   constructor(){
@@ -30,16 +32,16 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
-        <style>
-          @import url('https://fonts.googleapis.com/css?family=Farro&display=swap');
-        </style>
+        
         <nav>
           <Link to= '/'>Standings</Link>
-
+          <Link to= '/players'>Players</Link>
         </nav>
         <main>
           <Route exact path = '/' component = {Standings}/>
-          <Route path = '/owners' render = {routerProps => <Owner games={this.state.games} gamestats={this.state.gamestats} {...routerProps}/>}/>
+          <Route  path = '/owners' render = {routerProps => <Owner games={this.state.games} gamestats={this.state.gamestats} {...routerProps}/>}/>
+          <Route exact path = '/players' component = {Players}/>
+          <Route  path = '/player' render = {routerProps => <Player {...routerProps}/>}/>
         </main>
       </div>
     );

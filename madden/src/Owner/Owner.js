@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import HeadToHeadContainer from '../HeadToHeadContainer/HeadToHeadContainer'
 import './Owner.css'
+import Players from '../Players/Players'
+
 
 class Owner extends React.Component{
     constructor(){
@@ -29,7 +31,7 @@ class Owner extends React.Component{
                     
                  </div>
                     <HeadToHeadContainer {...this.state} gamestats= {this.props.gamestats} games = {this.props.games}/>
-                
+                    
                 
             </div>
         )
