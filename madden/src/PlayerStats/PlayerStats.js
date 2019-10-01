@@ -149,6 +149,27 @@ class PlayerStats extends React.Component{
         
     
     render(){
+        let placeholder = ['placeholder']
+        let table = placeholder.map( table => {
+            if(this.props.position === 'QB' || this.props.position === 'WR'  || this.props.position === 'TE'  || this.props.position === 'HB'  || this.props.position === 'FB'){
+                return (
+                    <div>
+                        <h1>Avg. Pass Yards: {this.state.pass_yards_avg}</h1>
+                        <h1>Avg. Pass Tds: {this.state.pass_td_avg}</h1>
+                        <h1>Avg. Times Sacked: {this.state.times_sacked_avg}</h1>
+                        <h1>Avg. Passes Completed: {this.state.pass_complete_avg}</h1>
+                        <h1>Avg. Passes Attempted:{this.state.pass_attempt_avg}</h1>
+                        <h1>Avg. Rush Yards: {this.state.rush_yards_avg}</h1>
+                        <h1>Avg. Rushing Tds{this.state.rush_tds_avg}</h1>
+                        <h1>Avg. Fumbles: {this.state.fumbled_avg}</h1>
+                        <h1>Avg. Broken Tackles: {this.state.break_tackle_avg}</h1>
+                        <h1>Avg. Receptions: {this.state.receptions_avg}</h1>
+                        <h1>Avg. Receiving Yards: {this.state.receiving_yards_avg}</h1>
+                        <h1>Avg Receiving Tds: {this.state.receiving_tds_avg}</h1>
+                    </div>
+                )
+            }
+        })
         return(
             <div>
                 <h1>{this.state.pass_yards_avg}</h1>

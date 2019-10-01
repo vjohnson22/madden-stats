@@ -11,7 +11,8 @@ class Player extends React.Component{
         this.state={
             player:[],
             against:"",
-            id:""
+            id:"",
+            position:''
         }
     }
     
@@ -27,7 +28,7 @@ class Player extends React.Component{
     componentDidUpdate() {
         if(this.state.player.length >0){
             if(this.state.player[0].id !== this.state.id){
-                this.setState({id: this.state.player[0].id })
+                this.setState({id: this.state.player[0].id, position: this.state.player[0].position  })
             }
         }
     }
@@ -46,7 +47,7 @@ class Player extends React.Component{
         return(
             <div>
                 {playerInfo}
-                <PlayerStats id={this.state.id} against={this.state.against}/>
+                <PlayerStats id={this.state.id} against={this.state.against} position={this.state.position}/>
             </div>
         )
 
