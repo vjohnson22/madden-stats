@@ -168,27 +168,21 @@ class PlayerStats extends React.Component{
                         <h1>Avg Receiving Tds: {this.state.receiving_tds_avg}</h1>
                     </div>
                 )
+            }else{
+                return(
+                    <div>
+                        <h1>Avg. Tackles: {this.state.tackles_avg}</h1>
+                        <h1>Avg. Tackles for Loss: {this.state.tfl_avg}</h1>
+                        <h1>Avg. Sacks: {this.state.sacks_avg}</h1>
+                        <h1>Avg. Interceptions: {this.state.interceptions_avg}</h1>
+                        <h1>Avg. Defensive Tds: {this.state.defensive_tds_avg}</h1>
+                    </div>        
+                )
             }
         })
         return(
             <div>
-                <h1>{this.state.pass_yards_avg}</h1>
-                <h1>{this.state.pass_td_avg}</h1>
-                <h1>{this.state.times_sacked_avg}</h1>
-                <h1>{this.state.pass_complete_avg}</h1>
-                <h1>{this.state.pass_attempt_avg}</h1>
-                <h1>{this.state.rush_yards_avg}</h1>
-                <h1>{this.state.rush_tds_avg}</h1>
-                <h1>{this.state.fumbled_avg}</h1>
-                <h1>{this.state.break_tackle_avg}</h1>
-                <h1>{this.state.receptions_avg}</h1>
-                <h1>{this.state.receiving_yards_avg}</h1>
-                <h1>{this.state.receiving_tds_avg}</h1>
-                <h1>{this.state.tackles_avg}</h1>
-                <h1>{this.state.tfl_avg}</h1>
-                <h1>{this.state.sacks_avg}</h1>
-                <h1>{this.state.interceptions_avg}</h1>
-                <h1>{this.state.defensive_tds_avg}</h1>
+                {table}
             </div>
         )
     }
