@@ -75,7 +75,7 @@ class Players extends React.Component{
                     <img className='playerImage' src = {player.photo_url}/>
                     <Link to ={`/player/${player.id}`}><h2>{player.name}</h2></Link>
                     <h3>{player.position}</h3> 
-                </div>
+               </div>
             )
         
         })
