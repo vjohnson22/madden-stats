@@ -162,6 +162,7 @@ class PlayerStats extends React.Component{
                         <h2>User Games Played: {this.state.games_played}</h2>
                         <h2>Pass Yards: {this.state.pass_yards_avg}</h2>
                         <h2>Pass Tds: {this.state.pass_td_avg}</h2>
+                        <h2>Interceptions: {this.state.interceptions_avg} </h2>
                         <h2>Times Sacked: {this.state.times_sacked_avg}</h2>
                         <h2>Passes Completed: {this.state.pass_complete_avg}</h2>
                         <h2>Passes Attempted:{this.state.pass_attempt_avg}</h2>
