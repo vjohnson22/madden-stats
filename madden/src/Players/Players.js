@@ -29,7 +29,7 @@ class Players extends React.Component{
     }
 
     componentDidUpdate(){
-        if(this.props.owner !== "") {
+        if(this.props.owner !== "" && this.props.against === "") {
             
             let games = this.state.playerstats.filter(stats => {
                 return stats.owner === `https://maddenstats.herokuapp.com/owners/${this.props.owner}`
@@ -47,6 +47,22 @@ class Players extends React.Component{
                 this.setState({playersList:filteredPlayers})
             }
              
+        } else if (this.props.owner !== "" && this.props.against !== ""){
+            let games = this.state.playerstats.filter(stats => {
+                return stats.owner === `https://maddenstats.herokuapp.com/owners/${this.props.owner}` && stats.against === `https://maddenstats.herokuapp.com/owners/${this.props.against}`
+                })
+                .map( stats => {
+                    return stats.name
+                })
+                
+            let filteredPlayers = this.state.players.filter(player => {
+                
+                return games.includes(`https://maddenstats.herokuapp.com/players/${player.id}`)
+            })    
+            console.log(filteredPlayers)
+            if(JSON.stringify(filteredPlayers) !== JSON.stringify( this.state.playersList)){
+                this.setState({playersList:filteredPlayers})
+            }
         }
     }
     
