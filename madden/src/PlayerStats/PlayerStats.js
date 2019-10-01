@@ -125,7 +125,7 @@ class PlayerStats extends React.Component{
                     pass_yards_avg: pass_yards_avg,
                     pass_td_avg: pass_td_avg,
                     times_sacked_avg: times_sacked_avg,
-                    pass_complete_avg: pass_complete,
+                    pass_complete_avg: pass_complete_avg,
                     pass_attempt_avg: pass_attempt_avg,
                     rush_yards_avg: rush_yards_avg,
                     rush_tds_avg: rush_tds_avg,
