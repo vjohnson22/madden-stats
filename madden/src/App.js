@@ -7,6 +7,7 @@ import Standings from './Standings/Standings'
 import Owner from './Owner/Owner'
 import Players from './Players/Players'
 import Player from './Player/Player'
+import PlayerPage from './PlayerPage/PlayerPage'
 
 class App extends React.Component {
   constructor(){
@@ -40,7 +41,7 @@ class App extends React.Component {
         <main>
           <Route exact path = '/' component = {Standings}/>
           <Route  path = '/owners' render = {routerProps => <Owner games={this.state.games} gamestats={this.state.gamestats} {...routerProps}/>}/>
-          <Route exact path = '/players' component = {Players}/>
+          <Route exact path = '/players' component = {PlayerPage}/>
           <Route  path = '/player' render = {routerProps => <Player {...routerProps}/>}/>
         </main>
       </div>
