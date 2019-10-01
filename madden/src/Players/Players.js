@@ -83,7 +83,18 @@ class Players extends React.Component{
         
         
         let playerPics = []
-        if (this.props.search !== ""){
+         if (this.props.owner !== undefined){
+        playerPics = this.state.playersList.map( (player, i)=> {
+            return(
+                <div className = 'playerGrid' key= {i}>
+                    <img className='playerImage' src = {player.photo_url}/>
+                    <Link to ={`/player/${player.id}`}><h2>{player.name}</h2></Link>
+                    <h3>{player.position}</h3> 
+               </div>
+            )
+        
+        })
+        }else if (this.props.search !== "" ){
             playerPics = this.state.searchList.map( (player, i)=> {
                 return(
                     <div className = 'playerGrid' key= {i}>
@@ -95,17 +106,6 @@ class Players extends React.Component{
             
             })
     
-        }else if (this.props.owner !== undefined){
-        playerPics = this.state.playersList.map( (player, i)=> {
-            return(
-                <div className = 'playerGrid' key= {i}>
-                    <img className='playerImage' src = {player.photo_url}/>
-                    <Link to ={`/player/${player.id}`}><h2>{player.name}</h2></Link>
-                    <h3>{player.position}</h3> 
-               </div>
-            )
-        
-        })
         }else{
         
         playerPics = this.state.players.map( (player, i)=> {
