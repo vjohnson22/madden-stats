@@ -11,7 +11,8 @@ class Players extends React.Component{
         this.state = {
             players:[],
             playerstats:[],
-            playersList:[]
+            playersList:[],
+            searchList:[]
         }
     }
     
@@ -64,11 +65,37 @@ class Players extends React.Component{
                 this.setState({playersList:filteredPlayers})
             }
         }
+        if(this.props.search !== ""){
+            let search = this.props.search
+            let searchMatch = new RegExp( search, "gi")
+            let searchFiltered = this.state.players.filter( player => {
+                return player.name.match(searchMatch) !== null
+            })
+            if(JSON.stringify(this.state.searchList) !== JSON.stringify(searchFiltered)){
+                this.setState({searchList:searchFiltered})
+            }
+        }
+
     }
     
     render(){
+        
+        
+        
         let playerPics = []
-        if (this.props.owner !== undefined){
+        if (this.props.search !== ""){
+            playerPics = this.state.searchList.map( (player, i)=> {
+                return(
+                    <div className = 'playerGrid' key= {i}>
+                        <img className='playerImage' src = {player.photo_url}/>
+                        <Link to ={`/player/${player.id}`}><h2>{player.name}</h2></Link>
+                        <h3>{player.position}</h3> 
+                   </div>
+                )
+            
+            })
+    
+        }else if (this.props.owner !== undefined){
         playerPics = this.state.playersList.map( (player, i)=> {
             return(
                 <div className = 'playerGrid' key= {i}>
@@ -79,7 +106,7 @@ class Players extends React.Component{
             )
         
         })
-    }else{
+        }else{
         
         playerPics = this.state.players.map( (player, i)=> {
             return(

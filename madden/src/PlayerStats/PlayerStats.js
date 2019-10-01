@@ -25,6 +25,7 @@ class PlayerStats extends React.Component{
             sacks_avg:"",
             interceptions_avg:"",
             defensive_tds_avg:"",
+            games_played:""
         }
     }
     componentDidMount() {
@@ -81,6 +82,8 @@ class PlayerStats extends React.Component{
         let interceptions_avg = 0
         let defensive_tds_avg = 0
 
+        let games_played = 0
+
         if (this.state.playerStats.length !== 0){
             this.state.playerStats.forEach( game => {
                 pass_yards += game.pass_yards
@@ -119,6 +122,7 @@ class PlayerStats extends React.Component{
             sacks_avg = sacks / this.state.playerStats.length
             interceptions_avg = interceptions / this.state.playerStats.length
             defensive_tds_avg = defensive_tds / this.state.playerStats.length
+            games_played = this.state.playerStats.length
 
             if(this.state.pass_td_avg === ""){
                 this.setState({
@@ -139,6 +143,7 @@ class PlayerStats extends React.Component{
                     sacks_avg: sacks_avg,
                     interceptions_avg: interceptions_avg,
                     defensive_tds_avg: defensive_tds_avg,
+                    games_played:games_played
                 })
             }
 
@@ -154,6 +159,7 @@ class PlayerStats extends React.Component{
             if(this.props.position === 'QB' ){
                 return (
                     <div>
+                        <h2>User Games Played: {this.state.games_played}</h2>
                         <h2>Pass Yards: {this.state.pass_yards_avg}</h2>
                         <h2>Pass Tds: {this.state.pass_td_avg}</h2>
                         <h2>Times Sacked: {this.state.times_sacked_avg}</h2>
@@ -168,6 +174,7 @@ class PlayerStats extends React.Component{
             }else if(this.props.position === 'WR'  || this.props.position === 'TE'  || this.props.position === 'HB'  || this.props.position === 'FB'){
                 return (
                     <div>
+                        <h2>User Games Played: {this.state.games_played}</h2>
                         <h2>Rush Yards: {this.state.rush_yards_avg}</h2>
                         <h2>Rushing Tds: {this.state.rush_tds_avg}</h2>
                         <h2>Fumbles: {this.state.fumbled_avg}</h2>
@@ -180,6 +187,7 @@ class PlayerStats extends React.Component{
             }else{
                 return(
                     <div>
+                        <h2>User Games Played: {this.state.games_played}</h2>
                         <h2>Tackles: {this.state.tackles_avg}</h2>
                         <h2>Tackles for Loss: {this.state.tfl_avg}</h2>
                         <h2>Sacks: {this.state.sacks_avg}</h2>
