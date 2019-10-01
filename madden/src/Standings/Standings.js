@@ -21,7 +21,7 @@ class Standings extends React.Component{
                     owner.winNumber = owner.wins.length
                     owner.lossNumber = owner.losses.length
                     owner.winPercent = owner.winNumber/(owner.winNumber+owner.lossNumber)
-                    owner.divison = ''
+                    owner.division = ''
                     owner.conference =''
                     owner.superbowl = ''
                     return owner
