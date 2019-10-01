@@ -180,11 +180,11 @@ class PlayerStats extends React.Component{
             }else{
                 return(
                     <div>
-                        <h2>Avg. Tackles: {this.state.tackles_avg}</h2>
-                        <h2>Avg. Tackles for Loss: {this.state.tfl_avg}</h2>
-                        <h2>Avg. Sacks: {this.state.sacks_avg}</h2>
-                        <h2>Avg. Interceptions: {this.state.interceptions_avg}</h2>
-                        <h2>Avg. Defensive Tds: {this.state.defensive_tds_avg}</h2>
+                        <h2>Tackles: {this.state.tackles_avg}</h2>
+                        <h2>Tackles for Loss: {this.state.tfl_avg}</h2>
+                        <h2>Sacks: {this.state.sacks_avg}</h2>
+                        <h2>Interceptions: {this.state.interceptions_avg}</h2>
+                        <h2>Defensive Tds: {this.state.defensive_tds_avg}</h2>
                     </div>        
                 )
             }
