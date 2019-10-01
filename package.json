@@ -1,0 +1,19 @@
+{
+  "name": "madden-stats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vjohnson22/madden-stats.git"
+  },
+  "author": "Victor Johnson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vjohnson22/madden-stats/issues"
+  },
+  "homepage": "https://github.com/vjohnson22/madden-stats#readme"
+}
