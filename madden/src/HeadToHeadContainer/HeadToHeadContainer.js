@@ -6,7 +6,7 @@ import Opponent from '../Opponent/Opponent'
 import TrendsContainer from '../TrendsContainer/TrendsContainer'
 import Dropdown from '../Dropdown/Dropdown'
 import StatDropDown from '../StatDropDown/StatDropDown'
-
+import Players from '../Players/Players'
 
 class HeadToHeadContainer extends React.Component{
     constructor(){
@@ -159,7 +159,10 @@ class HeadToHeadContainer extends React.Component{
                         <TrendsContainer className='chart' owner_games = {this.props.owner_game_stats} id= {this.props.id} name= {this.props.name} against_games = {this.props.played_against} versus= {this.state.versusName} versusCode = {this.state.versusCode} gamestats = {this.props.gamestats} game = {this.props.games} stat = {this.state.stat}/>
                         
                     </div>
+                                          
                 </div>
+                        <h1>Players Involved</h1>
+                        <Players owner = {this.props.id} against = {this.state.versusCode}/>  
             </div>
         )
     }
