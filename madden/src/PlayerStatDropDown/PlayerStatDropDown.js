@@ -32,8 +32,7 @@ showDropdownMenu = (event) => {
    
  
   render() {
-    let data = ['Passing Yards','Passing TDs','Times Sacked', 'Passes Completed', 'Passes Attempted','Interceptions Thrown', 'Rushing Yards', 'Rushing TDs', 'Fumbles', 'Broken Tackles', 'Receptions', 'Receiving Yards', 'Recieving TDs', 'Tackles', 'Tackles for Loss', 'Sacks', 'Interceptions', 'Defensive TDs', 'Forced Fumbles', 'Passes Defended'
-        
+    let data = ['Passing Yards','Passing TDs','Times Sacked', 'Passes Completed', 'Passes Attempted','Interceptions Thrown', 'Rushing Yards', 'Rushing TDs', 'Fumbles', 'Broken Tackles', 'Receptions', 'Receiving Yards', 'Receiving TDs', 'Tackles', 'Tackles for Loss', 'Sacks', 'Interceptions', 'Defensive TDs', 'Forced Fumbles', 'Passes Defended'      
 
     ]
     

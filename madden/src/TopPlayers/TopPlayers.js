@@ -29,7 +29,7 @@ class TopPlayers extends React.Component{
     }
 
     componentDidUpdate() {
-        if(this.state.playersAvg.length === 0){
+        
             let playersAvg = this.state.players.map(player => {
                 let pass_yards = 0
                 let pass_td = 0
@@ -157,34 +157,65 @@ class TopPlayers extends React.Component{
         if(JSON.stringify(this.state.playersAvg) !== JSON.stringify(topTen)){    
             this.setState({playersAvg:topTen})
         }
-    }
+    
     }
     updateStats = (e) => {
         let click =e.target.innerText
-        console.log(click)
+        
 
-        if(click === 'Points Per Game'){
-            this.setState({title:'PPG', stat: 'points'})
-        } else if(click ==='Total Offense'){ 
-            this.setState({title:'Total Offense', stat: 'off_yards_gained'})
+        if(click === 'Passing Yards'){
+            this.setState({title:'Passing Yards', stat: 'pass_yards_avg'})
+        } else if(click ==='Passing TDs'){ 
+            this.setState({title:'Passing TDs', stat: 'pass_td_avg'})
         }else if(click ==='Passing Yards'){ 
             this.setState({title:'Passing Yards', stat: 'pass_yards'})
+        }else if(click ==='Times Sacked'){ 
+            this.setState({title:'Times Sacked', stat: 'times_sacked_avg'})
+        }else if(click ==='Passes Completed'){ 
+            this.setState({title:'Passes Completed', stat: 'pass_complete_avg'})  
+        }else if(click ==='Passes Attempted'){ 
+            this.setState({title:'Passes Attempted', stat: 'pass_attempt_avg'})  
+        }else if(click ==='Interceptions Thrown'){ 
+            this.setState({title:'Interceptions Thrown', stat: 'pass_int_avg'})  
         }else if(click ==='Rushing Yards'){ 
-            this.setState({title:'Rushing Yards', stat: 'rush_yards'})
-        }else if(click ==='First Downs'){ 
-            this.setState({title:'First Downs', stat: 'first_downs'})  
-        }else if(click ==='Turnovers'){ 
-            this.setState({title:'Turnovers', stat: 'turnovers'})  
-        }
+            this.setState({title:'Rushing Yards', stat: 'rush_yards_avg'})  
+        }else if(click === 'Rushing TDs'){ 
+            this.setState({title:'Rushing TDs', stat: 'rush_tds_avg'})  
+        }else if(click ==='Fumbles'){ 
+            this.setState({title:'Fumbles', stat: 'fumbled_avg'})  
+        }else if(click ==='Broken Tackles'){ 
+            this.setState({title:'Broken Tackles', stat: 'break_tackle_avg' })  
+        }else if(click ==='Receptions'){ 
+            this.setState({title:'Receptions', stat: 'receptions_avg'})  
+        }else if(click ==='Receiving Yards'){ 
+            this.setState({title:'Receiving Yards', stat: 'receiving_yards_avg' })  
+        }else if(click ==='Receiving TDs'){ 
+            this.setState({title:'Receiving TDs', stat: 'receiving_tds_avg'})  
+        }else if(click ==='Tackles'){ 
+            this.setState({title:'Tackles', stat: 'tackles_avg'})  
+        }else if(click ==='Tackles for Loss'){ 
+            this.setState({title:'Tackles for Loss', stat: 'tfl_avg'})  
+        }else if(click ==='Sacks'){ 
+            this.setState({title:'Sacks', stat: 'sacks_avg'})  
+        }else if(click === 'Interceptions'){ 
+            this.setState({title: 'Interceptions', stat: 'interceptions_avg'})  
+        }else if(click ==='Defensive TDs'){ 
+            this.setState({title:'Defensive TDs', stat: 'defensive_tds_avg'})  
+        }else if(click ==='Forced Fumbles'){ 
+            this.setState({title:'Forced Fumbles', stat: 'forced_fumbles_avg'})  
+        }else if(click ==='Passes Defended'){ 
+            this.setState({title:'Passes Defended', stat: 'pass_defended_avg'})  
+        } 
+        
     }    
     render(){
          let performers = this.state.playersAvg.map((player, i) => {
              return(
-                 <div key ={i} className='topPlayerGrid'>
+                 <div key ={i} className='topPlayerGrid topPlayerGridAlign'>
                      <img className='topPic' src={player.photo_url}/>
-                     <Link to={`player/${player.id}`}><h2>{player.name}</h2></Link>
-                     <h2>{player[`${this.state.stat}`].toFixed(1)}</h2>
-                     <h2>{player.games_played}</h2>
+                     <Link to={`player/${player.id}`}><h1>{player.name}</h1></Link>
+                     <h1>{player[`${this.state.stat}`].toFixed(1)}</h1>
+                     <h1>{player.games_played}</h1>
 
                      
                  </div>
