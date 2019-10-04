@@ -76,7 +76,7 @@ class PlayerStats extends React.Component{
         let times_sacked_avg = 0
         let pass_complete_avg = 0
         let pass_attempt_avg = 0
-        let pass_int_avg
+        let pass_int_avg = 0
         let rush_yards_avg = 0
         let rush_tds_avg = 0
         let fumbled_avg = 0
