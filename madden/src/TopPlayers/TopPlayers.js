@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import './TopPlayers.css'
+import PlayerStatDropDown from '../PlayerStatDropDown/PlayerStatDropDown'
 
 class TopPlayers extends React.Component{
     constructor(){
@@ -10,7 +12,8 @@ class TopPlayers extends React.Component{
             playerStats: [],
             players: [],
             playersAvg: [],
-            stat: 'pass_yards_avg'
+            stat: 'pass_yards_avg',
+            title: 'Passing Yards'
 
         }
     }
@@ -156,13 +159,32 @@ class TopPlayers extends React.Component{
         }
     }
     }
+    updateStats = (e) => {
+        let click =e.target.innerText
+        console.log(click)
+
+        if(click === 'Points Per Game'){
+            this.setState({title:'PPG', stat: 'points'})
+        } else if(click ==='Total Offense'){ 
+            this.setState({title:'Total Offense', stat: 'off_yards_gained'})
+        }else if(click ==='Passing Yards'){ 
+            this.setState({title:'Passing Yards', stat: 'pass_yards'})
+        }else if(click ==='Rushing Yards'){ 
+            this.setState({title:'Rushing Yards', stat: 'rush_yards'})
+        }else if(click ==='First Downs'){ 
+            this.setState({title:'First Downs', stat: 'first_downs'})  
+        }else if(click ==='Turnovers'){ 
+            this.setState({title:'Turnovers', stat: 'turnovers'})  
+        }
+    }    
     render(){
          let performers = this.state.playersAvg.map((player, i) => {
              return(
-                 <div key ={i}>
-                     <img src={player.photo_url}/>
+                 <div key ={i} className='topPlayerGrid'>
+                     <img className='topPic' src={player.photo_url}/>
                      <Link to={`player/${player.id}`}><h2>{player.name}</h2></Link>
-                     <h2>{player[`${this.state.stat}`]}</h2>
+                     <h2>{player[`${this.state.stat}`].toFixed(1)}</h2>
+                     <h2>{player.games_played}</h2>
 
                      
                  </div>
@@ -174,7 +196,14 @@ class TopPlayers extends React.Component{
         
         return(
             <div>
-                <h1>{this.state.stat}</h1>
+                <h1>{this.state.title}</h1>
+                <PlayerStatDropDown updateStats = {this.updateStats}/>
+                <div className='topPlayerGrid'>
+                    <div></div>
+                    <h2>Name</h2>
+                    <h2>{this.state.title}</h2>
+                    <h2>Games Played</h2>
+                </div>
                 {performers}
             </div>
         )
