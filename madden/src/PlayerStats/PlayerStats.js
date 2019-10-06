@@ -177,7 +177,7 @@ class PlayerStats extends React.Component{
         let table = placeholder.map( table => {
             if(this.props.position === 'QB' ){
                 return (
-                    <div>
+                    <div className= 'playerTable'>
                         <h2>User Games Played: {this.state.games_played}</h2>
                         <h2>Pass Yards: {this.state.pass_yards_avg}</h2>
                         <h2>Pass Tds: {this.state.pass_td_avg}</h2>
@@ -194,7 +194,7 @@ class PlayerStats extends React.Component{
                 )
             }else if(this.props.position === 'WR'  || this.props.position === 'TE'  || this.props.position === 'HB'  || this.props.position === 'FB'){
                 return (
-                    <div>
+                    <div className= 'playerTable'>
                         <h2>User Games Played: {this.state.games_played}</h2>
                         <h2>Rush Yards: {this.state.rush_yards_avg}</h2>
                         <h2>Rushing Tds: {this.state.rush_tds_avg}</h2>
@@ -207,7 +207,7 @@ class PlayerStats extends React.Component{
                 )
             }else{
                 return(
-                    <div>
+                    <div className= 'playerTable'>
                         <h2>User Games Played: {this.state.games_played}</h2>
                         <h2>Tackles: {this.state.tackles_avg}</h2>
                         <h2>Tackles for Loss: {this.state.tfl_avg}</h2>
