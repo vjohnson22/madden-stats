@@ -15,9 +15,12 @@ class Standings extends React.Component{
         }
     }
     componentDidMount() {
-        axios.get('https://maddenstats.herokuapp.com/owners/')
+        axios.all([
+            axios.get('https://maddenstats.herokuapp.com/owners/'),
+            axios.get('https://maddenstats.herokuapp.com/seasonstats')
+        ])
             .then(res => {
-                let ownerRecords = res.data.map( (owner,i) => {
+                let ownerRecords = res[0].data.map( (owner,i) => {
                     owner.winNumber = owner.wins.length
                     owner.lossNumber = owner.losses.length
                     owner.winPercent = owner.winNumber/(owner.winNumber+owner.lossNumber)
@@ -27,16 +30,15 @@ class Standings extends React.Component{
                     return owner
                 })
                 ownerRecords.sort((a,b)=> (a.winPercent < b.winPercent) ? 1 : -1)
-                this.setState({owners:ownerRecords})
-            })
-        axios.get('https://maddenstats.herokuapp.com/seasonstats')
-            .then(res => {
-                console.log(res.data)
-                this.setState({season:res.data})
+                this.setState({owners:ownerRecords,season:res[1].data})
+            
+            
+                
             })
     }
 
     componentDidUpdate() {
+        if(this.state.season.owners !== 0){
         let updated = this.state.owners.map( owner => {
             let superbowl = 0
             let conference = 0
@@ -57,11 +59,11 @@ class Standings extends React.Component{
             owner.division = division
             return owner
             })
-            console.log(updated)
+
         if (JSON.stringify(updated) !== JSON.stringify(this.state.owners)){
             this.setState({owners:updated})
         }    
-    
+    }    
 }
         
     
@@ -77,8 +79,8 @@ class Standings extends React.Component{
                     <h2>{owner.winNumber}</h2>
                     <h2>{owner.lossNumber}</h2>
                     <h2>{owner.superbowl}</h2>
-                    <h2>{owner.conference}</h2>
-                    <h2>{owner.division}</h2>
+                    <h2 className= 'extra'>{owner.conference}</h2>
+                    <h2 className= 'extra'>{owner.division}</h2>
                 </div>
             )
 
@@ -97,8 +99,8 @@ class Standings extends React.Component{
                     <h2>Wins</h2>
                     <h2>Losses</h2>
                     <h2>Super Bowls</h2>
-                    <h2>Conferences</h2>
-                    <h2>Divisions</h2>
+                    <h2 className= 'extra'>Conferences</h2>
+                    <h2 className= 'extra'>Divisions</h2>
                 </div>       
                 {results}
             </div>

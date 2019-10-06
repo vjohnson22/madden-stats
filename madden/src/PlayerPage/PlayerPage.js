@@ -1,5 +1,6 @@
 import React from 'react'
 import Players from '../Players/Players'
+import './PlayerPage.css'
 
 class PlayerPage extends React.Component {
     constructor() {
@@ -17,8 +18,8 @@ class PlayerPage extends React.Component {
        
         
         return(
-            <div>
-                <div>
+            <div className='playerPage'>
+                <div >
                     <input placeholder='Player Search' onChange={this.searchName} value={this.state.search}/>
                 </div>
                 <Players search={this.state.search}/>

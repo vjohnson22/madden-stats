@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import HeadToHeadContainer from '../HeadToHeadContainer/HeadToHeadContainer'
 import './Owner.css'
-import Players from '../Players/Players'
+
 
 
 class Owner extends React.Component{
