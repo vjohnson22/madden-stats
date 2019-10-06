@@ -8,6 +8,7 @@ import Owner from './Owner/Owner'
 import Players from './Players/Players'
 import Player from './Player/Player'
 import PlayerPage from './PlayerPage/PlayerPage'
+import TopPlayers from'./TopPlayers/TopPlayers'
 
 class App extends React.Component {
   constructor(){
@@ -37,12 +38,14 @@ class App extends React.Component {
         <nav>
           <Link to= '/'>Standings</Link>
           <Link to= '/players'>Players</Link>
+          <Link to= '/topplayers'>Top Perfomers</Link>
         </nav>
         <main>
           <Route exact path = '/' component = {Standings}/>
           <Route  path = '/owners' render = {routerProps => <Owner games={this.state.games} gamestats={this.state.gamestats} {...routerProps}/>}/>
           <Route exact path = '/players' component = {PlayerPage}/>
           <Route  path = '/player' render = {routerProps => <Player {...routerProps}/>}/>
+          <Route exact path = '/topplayers' component = {TopPlayers}/>
         </main>
       </div>
     );
