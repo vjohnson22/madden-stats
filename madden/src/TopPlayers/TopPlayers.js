@@ -3,7 +3,7 @@ import axios from 'axios'
 import {Link} from 'react-router-dom'
 import './TopPlayers.css'
 import PlayerStatDropDown from '../PlayerStatDropDown/PlayerStatDropDown'
-
+ 
 class TopPlayers extends React.Component{
     constructor(){
         super()
@@ -226,7 +226,7 @@ class TopPlayers extends React.Component{
 
         
         return(
-            <div>
+            <div className= 'topPerfomers'>
                 <h1>{this.state.title}</h1>
                 <PlayerStatDropDown updateStats = {this.updateStats}/>
                 <div className='topPlayerGrid'>

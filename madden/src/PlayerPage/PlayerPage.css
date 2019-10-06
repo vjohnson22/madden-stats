@@ -1,0 +1,10 @@
+.playerPage{
+    margin-top:100px;
+    text-align: center;
+
+}
+
+input{
+    border: 2px solid black;
+    padding: 5px 40px;
+}

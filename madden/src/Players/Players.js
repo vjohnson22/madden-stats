@@ -3,7 +3,7 @@ import axios from 'axios'
 import './Players.css'
 import {Link} from 'react-router-dom'
 
-
+ 
 class Players extends React.Component{
     constructor(){
         super()

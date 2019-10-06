@@ -1,7 +1,7 @@
 .grids{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    
+    max-width: 100%;
 }
 
 .heading{
@@ -13,15 +13,35 @@
 .dropdowns {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: center; 
 }
 
 
 .page {
     display: grid;
     grid-template-columns: 1fr 1fr;
-}
-
-.chart{
+    text-align: center;
     max-width: 100%;
 }
+
+.played{
+    text-align: center;
+
+}
+
+@media only screen and (max-width: 600px){
+    .page{
+        grid-template-columns: 1fr;
+    }
+    .played{
+        font-size: 20px;
+        
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
