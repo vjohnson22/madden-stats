@@ -32,7 +32,7 @@ class Owner extends React.Component{
                  </div>
                     <HeadToHeadContainer {...this.state} gamestats= {this.props.gamestats} games = {this.props.games}/>
                     
-                
+                 
             </div>
         )
     }

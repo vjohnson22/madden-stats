@@ -224,7 +224,7 @@ class TopPlayers extends React.Component{
 
         
 
-        
+         
         return(
             <div className= 'topPerfomers'>
                 <h1>{this.state.title}</h1>
