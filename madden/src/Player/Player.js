@@ -45,7 +45,7 @@ class Player extends React.Component{
             )
         })
         return(
-            <div>
+            <div className= 'playerLayout'>
                 {playerInfo}
                 <PlayerStats id={this.state.id} against={this.state.against} position={this.state.position}/>
             </div>
