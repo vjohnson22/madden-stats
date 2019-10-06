@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* grid-template-columns: 1fr 1fr; */
+
 }
 .dropdowns {
     display: flex;
@@ -32,10 +32,17 @@
 @media only screen and (max-width: 600px){
     .page{
         grid-template-columns: 1fr;
+        font-size: 12px;
     }
     .played{
         font-size: 20px;
         
+    }
+    .heading {
+        font-size: 14px;      
+    }
+    .trend{
+        font-size: 14px;
     }
   }
   

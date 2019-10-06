@@ -38,7 +38,7 @@ class Player extends React.Component{
             <div className = 'playerHeading'key={i}>
                 <img className='pic' src = {player.photo_url}/>
                 <div>
-                    <h1>{player.name}</h1>
+                    <h1 className= 'pName'>{player.name}</h1>
                     <h2>Position: {player.position}</h2>
                 </div>
             </div>

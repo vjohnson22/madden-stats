@@ -120,7 +120,7 @@ class HeadToHeadContainer extends React.Component{
     
         }
     
-
+ 
         return(
             <div>
                 <div className='heading'>
@@ -160,7 +160,7 @@ class HeadToHeadContainer extends React.Component{
                     </div>
                     <div>
                         <StatDropDown updateStats = {this.updateStats}/>
-                        <h1>Trend: {this.state.title}</h1>
+                        <h1 className='trend'>Trend: {this.state.title}</h1>
                         <TrendsContainer className='chart' owner_games = {this.props.owner_game_stats} id= {this.props.id} name= {this.props.name} against_games = {this.props.played_against} versus= {this.state.versusName} versusCode = {this.state.versusCode} gamestats = {this.props.gamestats} game = {this.props.games} stat = {this.state.stat}/>
                         
                     </div>

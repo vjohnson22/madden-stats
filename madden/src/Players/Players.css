@@ -11,6 +11,7 @@
     border: 4px solid black;
     border-radius: 20px;
     margin: 20px;
+    
 }
 .playerGrid * {
     display: flex;
@@ -26,6 +27,10 @@
     margin: auto 0;
     border-radius: 10px;
 }
+.pName{
+    padding-left: 10px;
+     
+}
 
 @media only screen and (max-width: 600px){
     .layout {
@@ -33,9 +38,14 @@
         grid-template-columns: 1fr 1fr;
     }
     .playerGrid {
-        font-size: 14px;
+        font-size: 10px;
+        height: 70px;
+        margin: 10px;
+        grid-template-columns: 2fr 4fr 1fr;
     }
-
+    .playerImage {
+        max-height: 70px;
+    }
   }
   
   
