@@ -42,7 +42,7 @@
     }
     .playerGrid {
         font-size: 10px;
-        height: 70px;
+        max-height: 70px;
         max-width: 90%;
         margin: 10px;
         grid-template-columns: 2fr 4fr 1fr;
