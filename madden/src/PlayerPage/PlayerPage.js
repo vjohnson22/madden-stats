@@ -20,6 +20,9 @@ class PlayerPage extends React.Component {
         return(
             <div className='playerPage'>
                <div className = 'bumper'>hi</div>
+               <div className='bumper'>hi</div>
+               <div className='bumper'>hi</div>
+               <div className='bumper'>hi</div>
                 <div >
                     <input placeholder='Player Search' onChange={this.searchName} value={this.state.search}/>
                 </div>

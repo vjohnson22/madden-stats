@@ -227,6 +227,9 @@ class TopPlayers extends React.Component{
          
         return(
             <div className= 'topPerfomers'>
+                <div className='bumper'>hi</div>
+                <div className='bumper'>hi</div>
+                <div className='bumper'>hi</div>
                 <h1>{this.state.title}</h1>
                 <PlayerStatDropDown updateStats = {this.updateStats}/>
                 <div className='topPlayerGrid'>
