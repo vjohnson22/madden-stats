@@ -9,7 +9,10 @@ class Standings extends React.Component{
 
         this.state = {
             owners:[],
-            season:[]
+            season:[],
+            
+
+            
             
 
         }
@@ -20,6 +23,8 @@ class Standings extends React.Component{
             axios.get('https://maddenstats.herokuapp.com/seasonstats')
         ])
             .then(res => {
+
+                
                 let ownerRecords = res[0].data.map( (owner,i) => {
                     owner.winNumber = owner.wins.length
                     owner.lossNumber = owner.losses.length
@@ -28,17 +33,20 @@ class Standings extends React.Component{
                     owner.conference =''
                     owner.superbowl = ''
                     return owner
+                    
                 })
+                
                 ownerRecords.sort((a,b)=> (a.winPercent < b.winPercent) ? 1 : -1)
                 this.setState({owners:ownerRecords,season:res[1].data})
             
-            
+                
                 
             })
+            
     }
 
     componentDidUpdate() {
-        if(this.state.season.owners !== 0){
+
         let updated = this.state.owners.map( owner => {
             let superbowl = 0
             let conference = 0
@@ -60,18 +68,18 @@ class Standings extends React.Component{
             return owner
             })
 
-        if (JSON.stringify(updated) !== JSON.stringify(this.state.owners)){
-            this.setState({owners:updated})
-        }    
-    }    
+            
+    
+        
 }
         
     
     
     render() {
+        
         let loading = ['Loading...']
         let results   
-        if(this.state.owners.length === 0 || this.state.season.length === 0){
+        if(this.state.owners.length === 0 ){
              results = loading.map( (loading , i) => {
                 return(
                     <div>
@@ -80,7 +88,7 @@ class Standings extends React.Component{
                 )
              })
         }else{ 
-        
+            
         results = this.state.owners.map( (owner, i) => {
         
             return (
