@@ -105,6 +105,7 @@ class Standings extends React.Component{
 
         return(
             <div className= 'body'>
+                <div className = 'bumper'>hi</div>
                 <div className = 'grid'>
                     <h2>Team</h2>
                     <h2>Owner</h2>

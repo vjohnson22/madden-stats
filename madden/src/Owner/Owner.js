@@ -25,6 +25,7 @@ class Owner extends React.Component{
         
         return(
             <div>
+                <div className='bumper'>hi</div>
                 <div className='head'>
                     <h1 className='name'>{this.state.name}</h1>
                     <img className='teamPic' src = {this.state.photo_url}/>

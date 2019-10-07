@@ -36,6 +36,7 @@ class Player extends React.Component{
         let playerInfo = this.state.player.map((player, i) => {
             return(
             <div className = 'playerHeading'key={i}>
+                
                 <img className='pic' src = {player.photo_url}/>
                 <div>
                     <h1 className= 'pName'>{player.name}</h1>
@@ -46,6 +47,7 @@ class Player extends React.Component{
         })
         return(
             <div className= 'playerLayout'>
+                <div className= 'bumper'>hi</div>
                 {playerInfo}
                 <PlayerStats id={this.state.id} against={this.state.against} position={this.state.position}/>
             </div>
