@@ -69,7 +69,19 @@ class Standings extends React.Component{
     
     
     render() {
-        let results = this.state.owners.map( (owner, i) => {
+        let loading = ['Loading...']
+        let results   
+        if(this.state.owners.length === 0 || this.state.season.length === 0){
+             results = loading.map( (loading , i) => {
+                return(
+                    <div>
+                        <h1 className = 'loading'>{loading}</h1>
+                    </div>
+                )
+             })
+        }else{ 
+        
+        results = this.state.owners.map( (owner, i) => {
         
             return (
                 <div className = 'grid'>
@@ -85,6 +97,7 @@ class Standings extends React.Component{
             )
 
         })
+    }
         
         
         
