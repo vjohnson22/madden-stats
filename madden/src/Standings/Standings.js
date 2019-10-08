@@ -130,7 +130,7 @@ class Standings extends React.Component{
                 </div>       
                 {results}
                 <div className = 'bottomBumper'>hi</div>
-                
+                <div className = 'bottomBumper'>hi</div>
 
             </div>
         )

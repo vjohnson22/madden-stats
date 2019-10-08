@@ -150,7 +150,12 @@ class TopPlayers extends React.Component{
         
         playersAvg.sort((a,b)=> (a[`${this.state.stat}`] < b[`${this.state.stat}`]) ? 1 : -1)
         
-        let topTen = playersAvg.filter((player , i) => {
+        let moreThanTwoGames =  playersAvg.filter((player , i) => {
+            return player.games_played > 1
+        })  
+        
+
+        let topTen = moreThanTwoGames.filter((player , i) => {
             return i <= 9
         })
 
