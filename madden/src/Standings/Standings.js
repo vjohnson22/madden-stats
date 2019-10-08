@@ -10,7 +10,7 @@ class Standings extends React.Component{
         this.state = {
             owners:[],
             season:[],
-            
+            updatedOwners:[]            
 
             
             
@@ -67,6 +67,10 @@ class Standings extends React.Component{
             owner.division = division
             return owner
             })
+        if(this.state.owners.length > 0 && JSON.stringify(updated) !== JSON.stringify(this.state.updatedOwners)){
+            this.setState({updatedOwners:updated})
+
+        }
 
             
     
@@ -79,7 +83,7 @@ class Standings extends React.Component{
         
         let loading = ['Loading...']
         let results   
-        if(this.state.owners.length === 0 ){
+        if(this.state.updatedOwners.length === 0 ){
              results = loading.map( (loading , i) => {
                 return(
                     <div>
@@ -89,7 +93,7 @@ class Standings extends React.Component{
              })
         }else{ 
             
-        results = this.state.owners.map( (owner, i) => {
+        results = this.state.updatedOwners.map( (owner, i) => {
         
             return (
                 <div className = 'grid'>
