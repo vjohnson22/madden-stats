@@ -50,6 +50,8 @@ class Player extends React.Component{
                 <div className= 'bumper'>hi</div>
                 {playerInfo}
                 <PlayerStats id={this.state.id} against={this.state.against} position={this.state.position}/>
+                <div className = 'bottomBumper'>hi</div>
+                <div className = 'bottomBumper'>hi</div>
             </div>
         )
 

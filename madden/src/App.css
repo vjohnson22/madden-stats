@@ -7,14 +7,17 @@
 
 main {
   background-color: lightgray;
-  height: 2000px;
-  
+  height: 100%;
+    
 }
 nav *{
   text-decoration: none;
 }
 
-
+.bottomBumper{
+  padding: 100px;
+  color: lightgray;
+}
 
 nav {
   position: fixed;

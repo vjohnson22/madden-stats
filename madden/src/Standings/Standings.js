@@ -125,6 +125,9 @@ class Standings extends React.Component{
                     <h2 className= 'extra'>Divisions</h2>
                 </div>       
                 {results}
+                <div className = 'bottomBumper'>hi</div>
+                
+
             </div>
         )
     }
