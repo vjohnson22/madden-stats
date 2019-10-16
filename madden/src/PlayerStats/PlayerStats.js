@@ -142,27 +142,27 @@ class PlayerStats extends React.Component{
 
             if(this.state.pass_td_avg === ""){
                 this.setState({
-                    pass_yards_avg: pass_yards_avg,
-                    pass_td_avg: pass_td_avg,
-                    times_sacked_avg: times_sacked_avg,
-                    pass_complete_avg: pass_complete_avg,
-                    pass_attempt_avg: pass_attempt_avg,
-                    rush_yards_avg: rush_yards_avg,
-                    rush_tds_avg: rush_tds_avg,
-                    fumbled_avg: fumbled_avg,
-                    break_tackle_avg: break_tackle_avg, 
-                    receptions_avg: receptions_avg,
-                    receiving_yards_avg: receiving_yards_avg, 
-                    receiving_tds_avg: receiving_tds_avg,
-                    tackles_avg: tackles_avg,
-                    tfl_avg: tfl_avg,
-                    sacks_avg: sacks_avg,
-                    interceptions_avg: interceptions_avg,
-                    defensive_tds_avg: defensive_tds_avg,
-                    games_played:games_played,
-                    pass_int_avg: pass_int_avg,
-                    forced_fumbles_avg: forced_fumbles_avg,
-                    pass_defended_avg: pass_defended_avg
+                    pass_yards_avg: pass_yards_avg.toFixed(1),
+                    pass_td_avg: pass_td_avg.toFixed(1),
+                    times_sacked_avg: times_sacked_avg.toFixed(1),
+                    pass_complete_avg: pass_complete_avg.toFixed(1),
+                    pass_attempt_avg: pass_attempt_avg.toFixed(1),
+                    rush_yards_avg: rush_yards_avg.toFixed(1),
+                    rush_tds_avg: rush_tds_avg.toFixed(1),
+                    fumbled_avg: fumbled_avg.toFixed(1),
+                    break_tackle_avg: break_tackle_avg.toFixed(1), 
+                    receptions_avg: receptions_avg.toFixed(1),
+                    receiving_yards_avg: receiving_yards_avg.toFixed(1), 
+                    receiving_tds_avg: receiving_tds_avg.toFixed(1),
+                    tackles_avg: tackles_avg.toFixed(1),
+                    tfl_avg: tfl_avg.toFixed(1),
+                    sacks_avg: sacks_avg.toFixed(1),
+                    interceptions_avg: interceptions_avg.toFixed(1),
+                    defensive_tds_avg: defensive_tds_avg.toFixed(1),
+                    games_played:games_played.toFixed(1),
+                    pass_int_avg: pass_int_avg.toFixed(1),
+                    forced_fumbles_avg: forced_fumbles_avg.toFixed(1),
+                    pass_defended_avg: pass_defended_avg.toFixed(1)
                 })
             }
 
@@ -178,44 +178,44 @@ class PlayerStats extends React.Component{
             if(this.props.position === 'QB' ){
                 return (
                     <div className= 'playerTable'>
-                        <h2>User Games Played: {this.state.games_played}</h2>
-                        <h2>Pass Yards: {this.state.pass_yards_avg}</h2>
-                        <h2>Pass Tds: {this.state.pass_td_avg}</h2>
-                        <h2>Interceptions Thrown: {this.state.pass_int_avg} </h2>
-                        <h2>Times Sacked: {this.state.times_sacked_avg}</h2>
-                        <h2>Passes Completed: {this.state.pass_complete_avg}</h2>
-                        <h2>Passes Attempted:{this.state.pass_attempt_avg}</h2>
-                        <h2>Completion%: {((this.state.pass_complete_avg / this.state.pass_attempt_avg)*100).toFixed(0)} </h2>
-                        <h2>Rush Yards: {this.state.rush_yards_avg}</h2>
-                        <h2>Rushing Tds: {this.state.rush_tds_avg}</h2>
-                        <h2>Fumbles: {this.state.fumbled_avg}</h2>
-                        <h2>Broken Tackles: {this.state.break_tackle_avg}</h2>
+                        <h2>User Games Played:</h2> <h2>{this.state.games_played}</h2>
+                        <h2>Pass Yards: </h2> <h2> {this.state.pass_yards_avg}</h2>
+                        <h2>Pass Tds: </h2> <h2>{this.state.pass_td_avg}</h2>
+                        <h2>Interceptions Thrown: </h2> <h2>{this.state.pass_int_avg} </h2>
+                        <h2>Times Sacked: </h2> <h2>{this.state.times_sacked_avg}</h2>
+                        <h2>Passes Completed: </h2> <h2>{this.state.pass_complete_avg}</h2>
+                        <h2>Passes Attempted:</h2> <h2>{this.state.pass_attempt_avg}</h2>
+                        <h2>Completion%:</h2> <h2> {((this.state.pass_complete_avg / this.state.pass_attempt_avg)*100).toFixed(0)} </h2>
+                        <h2>Rush Yards: </h2> <h2>{this.state.rush_yards_avg}</h2>
+                        <h2>Rushing Tds: </h2> <h2>{this.state.rush_tds_avg}</h2>
+                        <h2>Fumbles: </h2> <h2>{this.state.fumbled_avg}</h2>
+                        <h2>Broken Tackles: </h2> <h2>{this.state.break_tackle_avg}</h2>
                     </div>
                 )
             }else if(this.props.position === 'WR'  || this.props.position === 'TE'  || this.props.position === 'HB'  || this.props.position === 'FB'){
                 return (
                     <div className= 'playerTable'>
-                        <h2>User Games Played: {this.state.games_played}</h2>
-                        <h2>Rush Yards: {this.state.rush_yards_avg}</h2>
-                        <h2>Rushing Tds: {this.state.rush_tds_avg}</h2>
-                        <h2>Fumbles: {this.state.fumbled_avg}</h2>
-                        <h2>Broken Tackles: {this.state.break_tackle_avg}</h2>
-                        <h2>Receptions: {this.state.receptions_avg}</h2>
-                        <h2>Receiving Yards: {this.state.receiving_yards_avg}</h2>
-                        <h2>Receiving Tds: {this.state.receiving_tds_avg}</h2>
+                        <h2>User Games Played: </h2> <h2>{this.state.games_played}</h2>
+                        <h2>Rush Yards:</h2> <h2> {this.state.rush_yards_avg}</h2>
+                        <h2>Rushing Tds: </h2> <h2>{this.state.rush_tds_avg}</h2>
+                        <h2>Fumbles: </h2> <h2>{this.state.fumbled_avg}</h2>
+                        <h2>Broken Tackles: </h2> <h2>{this.state.break_tackle_avg}</h2>
+                        <h2>Receptions: </h2> <h2>{this.state.receptions_avg}</h2>
+                        <h2>Receiving Yards: </h2> <h2>{this.state.receiving_yards_avg}</h2>
+                        <h2>Receiving Tds: </h2> <h2>{this.state.receiving_tds_avg}</h2>
                     </div>
                 )
             }else{
                 return(
                     <div className= 'playerTable'>
-                        <h2>User Games Played: {this.state.games_played}</h2>
-                        <h2>Tackles: {this.state.tackles_avg}</h2>
-                        <h2>Tackles for Loss: {this.state.tfl_avg}</h2>
-                        <h2>Sacks: {this.state.sacks_avg}</h2>
-                        <h2>Forced Fumbles: {this.state.forced_fumbles_avg}</h2>
-                        <h2>Interceptions: {this.state.interceptions_avg}</h2>
-                        <h2>Passes Defended: {this.state.pass_defended_avg}</h2>
-                        <h2>Defensive Tds: {this.state.defensive_tds_avg}</h2>
+                        <h2>User Games Played: </h2> <h2>{this.state.games_played}</h2>
+                        <h2>Tackles: </h2> <h2>{this.state.tackles_avg}</h2>
+                        <h2>Tackles for Loss: </h2> <h2>{this.state.tfl_avg}</h2>
+                        <h2>Sacks: </h2> <h2>{this.state.sacks_avg}</h2>
+                        <h2>Forced Fumbles: </h2> <h2>{this.state.forced_fumbles_avg}</h2>
+                        <h2>Interceptions: </h2> <h2>{this.state.interceptions_avg}</h2>
+                        <h2>Passes Defended: </h2> <h2>{this.state.pass_defended_avg}</h2>
+                        <h2>Defensive Tds: </h2> <h2>{this.state.defensive_tds_avg}</h2>
                     </div>        
                 )
             }
