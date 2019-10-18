@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import './PlayerStats.css'
+import PerGameStats from '../PerGameStats/PerGameStats'
+
 
 class PlayerStats extends React.Component{
     constructor() {
@@ -30,13 +32,24 @@ class PlayerStats extends React.Component{
             pass_int_avg:"",
             forced_fumbles_avg: "",
             pass_defended_avg:"",
+            games: [],
+            owners: [],
+            perGameStats:[]
         }
     }
     componentDidMount() {
-        axios.get('https://maddenstats.herokuapp.com/playerstats/')
+        // axios.get('https://maddenstats.herokuapp.com/playerstats/')
+        //     .then( res => {
+        //         this.setState({stats: res.data})
+        //     })
+        axios.all([
+            axios.get('https://maddenstats.herokuapp.com/playerstats/'),
+            axios.get('https://maddenstats.herokuapp.com/games'),
+            axios.get('https://maddenstats.herokuapp.com/owners'),
+            ])
             .then( res => {
-                this.setState({stats: res.data})
-            })
+                this.setState({stats: res[0].data, games:res[1].data, owners: res[2].data})
+            })    
     }
 
     componentDidUpdate() {
@@ -159,14 +172,54 @@ class PlayerStats extends React.Component{
                     sacks_avg: sacks_avg.toFixed(1),
                     interceptions_avg: interceptions_avg.toFixed(1),
                     defensive_tds_avg: defensive_tds_avg.toFixed(1),
-                    games_played:games_played.toFixed(1),
+                    games_played:games_played,
                     pass_int_avg: pass_int_avg.toFixed(1),
                     forced_fumbles_avg: forced_fumbles_avg.toFixed(1),
                     pass_defended_avg: pass_defended_avg.toFixed(1)
                 })
             }
 
+
         }
+// adding the game name to each player stat
+        if(this.state.playerStats.length > 0 && this.state.games.length > 0) {
+            let gamesAdded = this.state.playerStats.map( playerStat => {
+                
+    
+                let gameName = this.state.games.filter( game => {
+                    
+                    return `https://maddenstats.herokuapp.com/games/${game.id}` === playerStat.game
+                })
+
+                console.log(gameName)
+                playerStat.gameName = `Week ${gameName[0].week}, ${gameName[0].season}`
+                
+                let ownerName = this.state.owners.filter( owner => {
+                    
+                    return `https://maddenstats.herokuapp.com/owners/${owner.id}` === playerStat.owner
+                })
+    
+                playerStat.ownerName = ownerName[0].name
+                
+                let againstName = this.state.owners.filter( owner => {
+                    
+                    return `https://maddenstats.herokuapp.com/owners/${owner.id}` === playerStat.against
+                })
+    
+                playerStat.againstName = againstName[0].name
+                
+
+                return playerStat    
+
+            })
+            console.log(gamesAdded)
+        
+            if (JSON.stringify(this.state.perGameStats) !== JSON.stringify(gamesAdded) ){
+                this.setState({perGameStats: gamesAdded })
+            }   
+            
+        }
+        
     }
 
 
@@ -220,11 +273,65 @@ class PlayerStats extends React.Component{
                 )
             }
         })
+        let perGame = this.state.perGameStats.map( table => {
+            if(this.props.position === 'QB' ){
+                return (
+                    <div className= ''>
+                        <h2>Game</h2>
+                        <h2>Owner</h2>
+                        <h2>Against</h2>
+                        <h2>Pass Yards</h2>
+                        <h2>Pass Tds</h2>
+                        <h2>Interceptions Thrown</h2>
+                        <h2>Times Sacked</h2>
+                        <h2>Passes Completed</h2>
+                        <h2>Passes Attempted</h2>
+                        <h2>Completion%</h2>
+                        <h2>Rush Yards </h2>/h2>
+                        <h2>Rushing Tds</h2>
+                        <h2>Fumbles</h2>
+                        <h2>Broken Tackles</h2>
+                    </div>
+                )
+            }else if(this.props.position === 'WR'  || this.props.position === 'TE'  || this.props.position === 'HB'  || this.props.position === 'FB'){
+                return (
+                    <div className= ''>
+                        <h2>Game</h2>
+                        <h2>Owner</h2>
+                        <h2>Against</h2>
+                        <h2>Rush Yards</h2>
+                        <h2>Rushing Tds</h2>
+                        <h2>Fumbles</h2>
+                        <h2>Broken Tackles</h2>
+                        <h2>Receptions</h2>
+                        <h2>Receiving Yards</h2>
+                        <h2>Receiving Tds</h2>
+                    </div>
+                )
+            }else{
+                return(
+                    <div className= 'playerTable'>
+                        <h2>Game</h2>
+                        <h2>Owner</h2>
+                        <h2>Against</h2>
+                        <h2>Tackles</h2>
+                        <h2>Tackles for Loss</h2>
+                        <h2>Sacks</h2>
+                        <h2>Forced Fumbles</h2>
+                        <h2>Interceptions</h2>
+                        <h2>Passes Defended</h2>
+                        <h2>Defensive Tds</h2>
+                    </div>        
+                )
+            }
+        })
+
         return(
             <div className= 'playerStatsGrid'>
                 <div>
                 <h1>User Game Averages</h1>
                 {table}
+                {perGame}
                 </div>
             </div>
         )
