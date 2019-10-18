@@ -273,66 +273,125 @@ class PlayerStats extends React.Component{
                 )
             }
         })
-        let perGame = this.state.perGameStats.map( table => {
+        // adds the headers
+        let perGameTitles = placeholder.map( table => {
             if(this.props.position === 'QB' ){
                 return (
-                    <div className= ''>
-                        <h2>Game</h2>
-                        <h2>Owner</h2>
-                        <h2>Against</h2>
-                        <h2>Pass Yards</h2>
-                        <h2>Pass Tds</h2>
-                        <h2>Interceptions Thrown</h2>
-                        <h2>Times Sacked</h2>
-                        <h2>Passes Completed</h2>
-                        <h2>Passes Attempted</h2>
-                        <h2>Completion%</h2>
-                        <h2>Rush Yards </h2>/h2>
-                        <h2>Rushing Tds</h2>
-                        <h2>Fumbles</h2>
-                        <h2>Broken Tackles</h2>
+                    <div className= 'qbStats'>
+                        <h5>Game</h5>
+                        <h5>Owner</h5>
+                        <h5>Against</h5>
+                        <h5>Pass Yards</h5>
+                        <h5>Pass Tds</h5>
+                        <h5>Interceptions Thrown</h5>
+                        <h5>Times Sacked</h5>
+                        <h5>Passes Completed</h5>
+                        <h5>Passes Attempted</h5>
+                        <h5>Completion%</h5>
+                        <h5>Rush Yards </h5>
+                        <h5>Rushing Tds</h5>
+                        <h5>Fumbles</h5>
+                        <h5>Broken Tackles</h5>
                     </div>
                 )
             }else if(this.props.position === 'WR'  || this.props.position === 'TE'  || this.props.position === 'HB'  || this.props.position === 'FB'){
                 return (
-                    <div className= ''>
-                        <h2>Game</h2>
-                        <h2>Owner</h2>
-                        <h2>Against</h2>
-                        <h2>Rush Yards</h2>
-                        <h2>Rushing Tds</h2>
-                        <h2>Fumbles</h2>
-                        <h2>Broken Tackles</h2>
-                        <h2>Receptions</h2>
-                        <h2>Receiving Yards</h2>
-                        <h2>Receiving Tds</h2>
+                    <div className= 'skillStats'>
+                        <h4>Game</h4>
+                        <h4>Owner</h4>
+                        <h4>Against</h4>
+                        <h4>Rush Yards</h4>
+                        <h4>Rushing Tds</h4>
+                        <h4>Fumbles</h4>
+                        <h4>Broken Tackles</h4>
+                        <h4>Receptions</h4>
+                        <h4>Receiving Yards</h4>
+                        <h4>Receiving Tds</h4>
                     </div>
                 )
             }else{
                 return(
-                    <div className= 'playerTable'>
-                        <h2>Game</h2>
-                        <h2>Owner</h2>
-                        <h2>Against</h2>
-                        <h2>Tackles</h2>
-                        <h2>Tackles for Loss</h2>
-                        <h2>Sacks</h2>
-                        <h2>Forced Fumbles</h2>
-                        <h2>Interceptions</h2>
-                        <h2>Passes Defended</h2>
-                        <h2>Defensive Tds</h2>
+                    <div className= 'defenseStats'>
+                        <h4>Game</h4>
+                        <h4>Owner</h4>
+                        <h4>Against</h4>
+                        <h4>Tackles</h4>
+                        <h4>Tackles for Loss</h4>
+                        <h4>Sacks</h4>
+                        <h4>Forced Fumbles</h4>
+                        <h4>Interceptions</h4>
+                        <h4>Passes Defended</h4>
+                        <h4>Defensive Tds</h4>
+                    </div>        
+                )
+            }
+        })
+        let perGame = this.state.perGameStats.map( table => {
+            if(this.props.position === 'QB' ){
+                return (
+
+                    
+                    <div className= 'qbStats'>
+                        <h5>{table.gameName}</h5>
+                        <h5>{table.ownerName}</h5>
+                        <h5>{table.againstName}</h5>
+                        <h5>{table.pass_yards}</h5>
+                        <h5>{table.pass_td}</h5>
+                        <h5>{table.pass_int}</h5>
+                        <h5>{table.times_sacked}</h5>
+                        <h5>{table.pass_complete}</h5>
+                        <h5>{table.pass_attempt}</h5>
+                        <h5>{((table.pass_complete/table.pass_attempt)*100).toFixed(1)}</h5>
+                        <h5>{table.rush_yards}</h5>
+                        <h5>{table.rush_tds}</h5>
+                        <h5>{table.fumbled}</h5>
+                        <h5>{table.break_tackle}</h5>
+                    </div>
+                )
+            }else if(this.props.position === 'WR'  || this.props.position === 'TE'  || this.props.position === 'HB'  || this.props.position === 'FB'){
+                return (
+                    <div className= 'skillStats'>
+                        <h4>{table.gameName}</h4>
+                        <h4>{table.ownerName}</h4>
+                        <h4>{table.againstName}</h4>
+                        <h4>{table.rush_yards}</h4>
+                        <h4>{table.rush_tds}</h4>
+                        <h4>{table.fumbled}</h4>
+                        <h4>{table.break_tackle}</h4>
+                        <h4>{table.receptions}</h4>
+                        <h4>{table.receiving_yards}</h4>
+                        <h4>{table.receiving_tds}</h4>
+                    </div>
+                )
+            }else{
+                return(
+                    <div className= 'defenseStats'>
+                        <h4>{table.gameName}</h4>
+                        <h4>{table.ownerName}</h4>
+                        <h4>{table.againstName}</h4>
+                        <h4>{table.tackles}</h4>
+                        <h4>{table.tfl}</h4>
+                        <h4>{table.sacks}</h4>
+                        <h4>{table.forced_fumbles}</h4>
+                        <h4>{table.interceptions}</h4>
+                        <h4>{table.pass_defended}</h4>
+                        <h4>{table.defensive_tds}</h4>
                     </div>        
                 )
             }
         })
 
         return(
-            <div className= 'playerStatsGrid'>
-                <div>
-                <h1>User Game Averages</h1>
-                {table}
-                {perGame}
+            <div>
+                <div className= 'playerStatsGrid'>
+                    <div>
+                    <h1>User Game Averages</h1>
+                    {table}
+                    </div>
+                    
                 </div>
+                {perGameTitles}
+                {perGame}
             </div>
         )
     }
