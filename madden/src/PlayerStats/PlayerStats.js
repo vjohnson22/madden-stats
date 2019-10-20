@@ -277,9 +277,9 @@ class PlayerStats extends React.Component{
         let perGameTitles = placeholder.map( table => {
             if(this.props.position === 'QB' ){
                 return (
-                    <div className= 'qbStats'>
+                    <div className= 'qbStats heading'>
                         <h5>Game</h5>
-                        <h5>Owner</h5>
+                        <h5 className='owner'>Owner</h5>
                         <h5>Against</h5>
                         <h5>Pass Yards</h5>
                         <h5>Pass Tds</h5>
@@ -296,9 +296,9 @@ class PlayerStats extends React.Component{
                 )
             }else if(this.props.position === 'WR'  || this.props.position === 'TE'  || this.props.position === 'HB'  || this.props.position === 'FB'){
                 return (
-                    <div className= 'skillStats'>
+                    <div className= 'skillStats heading'>
                         <h4>Game</h4>
-                        <h4>Owner</h4>
+                        <h4 className='owner'>Owner</h4>
                         <h4>Against</h4>
                         <h4>Rush Yards</h4>
                         <h4>Rushing Tds</h4>
@@ -311,9 +311,9 @@ class PlayerStats extends React.Component{
                 )
             }else{
                 return(
-                    <div className= 'defenseStats'>
+                    <div className= 'defenseStats heading'>
                         <h4>Game</h4>
-                        <h4>Owner</h4>
+                        <h4 className='owner'>Owner</h4>
                         <h4>Against</h4>
                         <h4>Tackles</h4>
                         <h4>Tackles for Loss</h4>
@@ -333,7 +333,7 @@ class PlayerStats extends React.Component{
                     
                     <div className= 'qbStats'>
                         <h5>{table.gameName}</h5>
-                        <h5>{table.ownerName}</h5>
+                        <h5 className='owner'>{table.ownerName}</h5>
                         <h5>{table.againstName}</h5>
                         <h5>{table.pass_yards}</h5>
                         <h5>{table.pass_td}</h5>
@@ -352,7 +352,7 @@ class PlayerStats extends React.Component{
                 return (
                     <div className= 'skillStats'>
                         <h4>{table.gameName}</h4>
-                        <h4>{table.ownerName}</h4>
+                        <h4 className='owner'>{table.ownerName}</h4>
                         <h4>{table.againstName}</h4>
                         <h4>{table.rush_yards}</h4>
                         <h4>{table.rush_tds}</h4>
@@ -367,7 +367,7 @@ class PlayerStats extends React.Component{
                 return(
                     <div className= 'defenseStats'>
                         <h4>{table.gameName}</h4>
-                        <h4>{table.ownerName}</h4>
+                        <h4 className='owner'>{table.ownerName}</h4>
                         <h4>{table.againstName}</h4>
                         <h4>{table.tackles}</h4>
                         <h4>{table.tfl}</h4>
@@ -385,8 +385,8 @@ class PlayerStats extends React.Component{
             <div>
                 <div className= 'playerStatsGrid'>
                     <div>
-                    <h1>User Game Averages</h1>
-                    {table}
+                        <h1>User Game Averages</h1>
+                        {table}
                     </div>
                     
                 </div>
