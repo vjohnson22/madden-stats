@@ -175,7 +175,7 @@ class CareerStats extends React.Component{
     render(){
          let performers = this.state.playersAvg.map((player, i) => {
              return(
-                 <div key ={i} className='topPlayerGrid topPlayerGridAlign'>
+                 <div key ={i} className='careerPlayerGrid topPlayerGridAlign'>
                      <img className='topPic' src={player.photo_url}/>
                      <Link to={`player/${player.id}`}><h1>{player.name}</h1></Link>
                      <h1>{player[`${this.state.stat}`].toFixed(0)}</h1>
