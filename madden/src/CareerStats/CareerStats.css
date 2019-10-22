@@ -2,7 +2,7 @@
     text-align: center;
 }
 
-.topPlayerGrid{
+.careerPlayerGrid{
     display:grid;
     grid-template-columns: 1fr 2fr 1fr;
     border: 1px solid black;
@@ -24,7 +24,7 @@
 }
 
 @media only screen and (max-width: 600px){
-    .topPlayerGrid{
+    .careerPlayerGrid{
         font-size: 10px;
         max-width: 90%;
         height: 60px;

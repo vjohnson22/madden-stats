@@ -196,7 +196,7 @@ class CareerStats extends React.Component{
                 <div className='bumper'>hi</div>
                 <h1>{this.state.title}</h1>
                 <PlayerStatDropDown updateStats = {this.updateStats}/>
-                <div className='topPlayerGrid'>
+                <div className='careerPlayerGrid'>
                     <div></div>
                     <h2>Name</h2>
                     <h2>{this.state.title}</h2>
