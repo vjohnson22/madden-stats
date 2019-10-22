@@ -40,7 +40,7 @@ class App extends React.Component {
         <nav>
           <Link to= '/'>Standings</Link>
           <Link to= '/players'>Players</Link>
-          <Link to= '/topplayers'>Top Perfomers</Link>
+          <Link to= '/topplayers'>Per Game Stats</Link>
           <Link to = '/careerstats'>Career Leaders</Link>
         </nav>
         <main>
