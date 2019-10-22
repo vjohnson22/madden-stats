@@ -9,6 +9,8 @@ import Players from './Players/Players'
 import Player from './Player/Player'
 import PlayerPage from './PlayerPage/PlayerPage'
 import TopPlayers from'./TopPlayers/TopPlayers'
+import CareerStats from './CareerStats/CareerStats'
+
 
 class App extends React.Component {
   constructor(){
@@ -39,6 +41,7 @@ class App extends React.Component {
           <Link to= '/'>Standings</Link>
           <Link to= '/players'>Players</Link>
           <Link to= '/topplayers'>Top Perfomers</Link>
+          <Link to = '/careerstats'>Career Leaders</Link>
         </nav>
         <main>
           <Route exact path = '/' component = {Standings}/>
@@ -46,6 +49,7 @@ class App extends React.Component {
           <Route exact path = '/players' component = {PlayerPage}/>
           <Route  path = '/player' render = {routerProps => <Player {...routerProps}/>}/>
           <Route exact path = '/topplayers' component = {TopPlayers}/>
+          <Route exact path = '/careerstats' component = {CareerStats}/>
         </main>
       </div>
     );
