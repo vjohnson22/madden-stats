@@ -1,0 +1,43 @@
+.topPerfomers{
+    text-align: center;
+}
+
+.careerPlayerGrid{
+    display:grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    border: 1px solid black;
+    /* border-radius: 10px; */
+    max-width: 60%;
+    margin: 0 auto;
+    font-size: 16px;
+    
+    box-shadow: 1px 1px 1px; 
+    background-color:white;
+}
+.topPlayerGridAlign *{
+    margin: auto 0;
+}
+
+.topPic {
+    width: 200px;
+    height: 150px;
+}
+
+@media only screen and (max-width: 600px){
+    .careerPlayerGrid{
+        font-size: 10px;
+        max-width: 90%;
+        height: 60px;
+    }
+    .topPic {
+        max-width: 100%;
+        height: 60px;
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
