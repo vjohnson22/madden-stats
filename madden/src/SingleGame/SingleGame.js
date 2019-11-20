@@ -114,16 +114,29 @@ class SingleGame extends React.Component{
     }    
     render(){
          let performers = this.state.playersAvg.map((player, i) => {
-             return(
+            if(this.state.stat === 'sack'){ 
+            return(
                  <div key ={i} className='careerPlayerGrid topPlayerGridAlign'>
                      <img className='topPic' src={player.photo_url}/>
                      <Link to={`player/${player.playerId}`}><h1>{player.player}</h1></Link>
-                     <h1>{player[`${this.state.stat}`].toFixed(0)}</h1>
+                     <h1>{player[`${this.state.stat}`].toFixed(2)}</h1>
                      
 
                      
                  </div>
              )
+            }else{
+                return(
+                    <div key ={i} className='careerPlayerGrid topPlayerGridAlign'>
+                        <img className='topPic' src={player.photo_url}/>
+                        <Link to={`player/${player.playerId}`}><h1>{player.player}</h1></Link>
+                        <h1>{player[`${this.state.stat}`].toFixed(0)}</h1>
+                        
+   
+                        
+                    </div>
+                )  
+            }
          })
 
         
